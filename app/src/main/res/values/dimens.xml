@@ -35,5 +35,6 @@
     <dimen name="status_bar_height">25dp</dimen>
     <dimen name="dialog_button_height">35dp</dimen>
     <dimen name="pb_dimen">55dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
 
 </resources>

@@ -14,12 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import net.sandi.luyeechon.R;
+import net.sandi.luyeechon.fragments.HealthFragment;
 import net.sandi.luyeechon.utils.MMFontUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class HealthActivity extends AppCompatActivity {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -59,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        HealthFragment healthFragment = HealthFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container, healthFragment)
+                .commit();
     }
 
     @Override
