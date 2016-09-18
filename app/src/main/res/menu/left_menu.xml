@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<group android:checkableBehavior="single">
+    <item
+        android:id="@+id/menu_sate_khon_arr"
+        android:icon="@drawable/ic_account_box_black_24dp"
+        android:title="Sate Khon Arr"
+        android:checked="true"
+        />
+    <item
+        android:id="@+id/menu_health_topics"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Short Health Topics"/>
+
+    <item
+        android:id="@+id/menu_short_jokes"
+        android:icon="@drawable/ic_assignment_ind_black_24dp"
+        android:title="Short Jokes"/>
+    <item
+        android:id="@+id/menu_quiz"
+        android:icon="@drawable/ic_assignment_ind_black_24dp"
+        android:title="Pop Qiz"/>
+</group>
+</menu>
