@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fitsSystemWindows="true">
+
+<android.support.design.widget.AppBarLayout
+    android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/detail_backdrop_height"
+    android:fitsSystemWindows="true"
+    android:theme="@style/AppTheme.AppBarOverlay">
+
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:id="@+id/collapsing_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:contentScrim="?attr/colorPrimary"
+        app:expandedTitleMarginEnd="@dimen/margin_medium_2"
+        app:expandedTitleMarginStart="@dimen/margin_medium_2"
+        app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
+        app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+        <ImageView
+            android:id="@+id/iv_attraction"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:scaleType="centerCrop"
+            app:layout_collapseMode="parallax"
+            android:src="@drawable/lime_health" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </android.support.design.widget.CollapsingToolbarLayout>
+
+</android.support.design.widget.AppBarLayout>
+
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <net.sandi.luyeechon.components.MMTextView
+        android:id="@+id/tv_attraction_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:fontFamily="sans-serif-light"
+        android:lineSpacingMultiplier="1.2"
+        android:text="နာက်င္ျခင္းေတြအတြက္ သံပုရာခြံ
+ေလးဖက္နာ၊ အရိုးအဆစ္ ေရာင္ရမ္းနာ၊ ဒူလာ ေခၚ ေဂါက္ေရာဂါ၊ အရြတ္အေၾကာနာ စတဲ့ ေ၀ဒနာေတြကို ခံစားရလို႔ ေနရထိုင္ရ ကသိကေအာက္ ျဖစ္ရသူေတြအတြက္ သက္သာေစမယ့္ သတင္းေကာင္းတစ္ခုကေတာ့ သံပုရာခြံ ရွိဖို႔ပဲ လိုပါတယ္။
+သံပုရာ ဆိုတာ ဗစ္တာမင္ စီ ၾကြယ္၀တဲ့ပစၥည္းျဖစ္ၿပီး ေန႔စဥ္ ခႏၶာကိယ္အတြက္ ဗစ္တာမင္စီ လိုအပ္ခ်က္က ၃၁ ရာခိုင္ႏႈန္း ရွိပါတယ္။ ဗီတာမင္စီရဲ႕ ဂုဏ္သတၱိေတြက ေျပာမဆံုးေအာင္ မ်ားလွသလို သံပုရာသီး၊ သံပုရာခြံရဲ႕ ေဆးဖက္၀င္အစြမ္းေတြကလဲ သံုးမကုန္ေအာင္ က်ယ္ျပန္႔လွပါတယ္။ အဲ့ဒီထဲကမွ အရိုးအဆစ္ နာက်င္မႈေတြကို သံပုရာခြံက သက္သာေအာင္ ထိေရာက္ စြမ္းေဆာင္ေပးႏိုင္ပံုကို ေစာႏြဲ ့ေနဆိုင္-ပူတာအို ေပ့ခ်္ကေန မွ်ေ၀တင္ျပလိုက္ပါတယ္။
+လိုအပ္တဲ့ပစၥည္းေတြကေတာ့ သံပုရာသီး ၄ လံုးနဲ႔ Olive Oil လို့ေခၚတဲ့ သံလြင္ဆီတို႔ပါပဲ။ တျခားပစၥည္းေတြကေတာ့ ပလတ္စတစ္အိတ္၊ ဖန္ဘူး သို႔မဟုတ္ ဖန္ပုလင္းတလံုး၊ ေဂါ့ဇ္စ ေခၚ ပတ္တီးအက်ဲစ၊ သိုးေမြးတဘက္ တို႔ပါပဲ။
+ေဆးကိုျပင္ဆင္ရမယ့္နည္းလမ္းကေတာ့ သံပုရာခြံေတြကို ဖန္ဘူးထဲထည့္ၿပီး သံလြင္ဆီကို ဖန္ဘူးထိပ္အထိ ထည့္ေပးရပါမယ္။ ၿပီးရင္ေတာ့ ဖန္ဘူးကို ပိတ္ၿပီး ၂ ပတ္ေလာက္ ထားရမွာပါ။ အဲလိုထားၿပီးရင္ ေဆးအဆီ ရလာပါၿပီ။
+အဲဒီေဆးအဆီကို ပတ္တီးစမွာ စိမ္ ဆြတ္လိုက္ၿပီး နာတဲ့ အရိုး၊ အဆစ္ေပၚမွာ လိမ္းပါ။ အဲဒီ ေဆးစိုေနတဲ့ ပတ္တီးစကိုပါ နာတဲ့ေနရာေပၚမွာ တင္ထားလိုက္ၿပီး ပတ္တီးစေပၚကေန ပလတ္စတစ္အိတ္ ထပ္ပတ္လိုက္ပါ။ ၿပီးရင္ အဲ့ဒီအေပၚကမွ သိုးေမြးတဘက္ ထပ္ပတ္ေပးရမွာပါ။ နည္းကေတာ့ အဲဒါပါပဲ။ လြယ္ပါတယ္ေနာ္။ အဲလိုလုပ္ေပးရင္ ညဖက္လုပ္ မနက္ဆို ေပ်ာက္ေရာ ဆိုပဲ။ ႏွစ္ရွည္ခံစားရသူေတြကေတာ့ ခ်က္ခ်င္း မေပ်ာက္ေတာင္ သက္သာသြားမွာေတာ့ အေသအခ်ာပါပဲ။
+တခ်ိဳ႕ကေတာ့ ေဆးဖက္၀င္ အစြမ္းစံုတဲ့ သံပုရာခြံကို ေဆးျဖစ္၀ါးျဖစ္ေရာ ႀကိဳက္ႏွစ္သက္လို႔ေရာ စားတတ္ၾကပါေသးတယ္။
+သံပုရာခြံဟာ ဗစ္တာမင္စီ ျပည့္၀လြန္းတာေၾကာင့္ တုပ္ေကြး၊ လည္ေခ်ာင္းနာ၊ သာမန္ အေအးမိတာမ်ိဳးလို ကူးစက္ေရာဂါေတြကို ကာကြယ္ေပးႏိုင္ၿပီး ၀မ္းပံုမွန္ သြားေစတဲ့ ဖိုက္ဘာဓာတ္ကိုလဲ လႈံ႕ေဆာ္ေပးႏိုင္ပါတယ္။
+သံပုရာခြံမွာပါတဲ့ ပိုလီဖွီေနာ ဖွေလဗာႏြိဳက္ ဆိုတဲ့ဓာတ္က ကိုလက္ စထေရာကို ေလွ်ာ့ခ်ေပးၿပီး ေသြးဖိအားပမာဏကို ထိန္းသိမ္းေပးႏိုင္တဲ့ ပိုတက္စီယမ္လဲ ပါ၀င္ပါတယ္။
+ဒါ့အျပင္ ခႏၶာကိုယ္ကေန ကာဘိုဟိုက္ဒရိတ္ ပိုလွ်ံပမာဏကို စုပ္ယူျခင္းကေန တားဆီးေပးႏိုင္တဲ့ ပက္တင္ ဆိုတဲ့ ဓာတ္လဲ ပါ၀င္တာေၾကာင့္ ကိုယ္အေလးခ်ိန္ ေလွ်ာ့ခ်ရာမွာ အေထာက္အကူ ျပဳေနျပန္ပါေရာ။ ဒါေၾကာင့္ ပ်ားသံပုရာ ဆိုၿပီး အခံြပါ ထည့္ရတာ ျဖစ္ပါလိမ့္မယ္။
+သံပုရာခြံမွာပါတဲ့ ခရစ္တစ္အက္ဆစ္နဲ႔ ဗစ္တာမင္စီေၾကာင့္ အေရျပားေပၚက အမည္းစက္ေတြနဲ႔ အိုမင္းရွံဳ႕တြမႈကိုျဖစ္ေစတဲ့ ဖရီးရက္ဒီကယ္ေတြကို တားဆီးရာမွာ အလြန္အမင္းကို အစြမ္းထက္ ထိေရာက္လွတာေၾကာင့္ အေရျပားရဲ႕ အရည္အေသြးကို ထိန္းသိမ္းေပးႏိုင္ပါတယ္။
+ကဲ- က်န္းမာေရးနဲ႔အလွအပအတြက္ သံပုရာသီးေရာ သံပုရာခြံပါ လိမ္းရာ၊ စားသံုးရာမွာ ပံုစံအမ်ိဳးမ်ိဳးနဲ႔ အစြမ္းထက္တယ္ ဆိုတာ အခုသိသြားၿပီဆိုမွေတာ့ ေနာက္က်တယ္ဆိုတာ မရွိေတာ့ပါဘူးေလ။
+ေစာႏြဲ႔ေနဆိုင္(ပူတာအို)
+ကိုးကား - Healthy Food House
+အစြမ္းထက္ သဘာ၀ေဆးနည္းမ်ား"
+        android:textSize="@dimen/text_regular_2x"
+        android:padding="@dimen/margin_medium_2"
+        />
+
+</android.support.v4.widget.NestedScrollView>
+
+<android.support.design.widget.FloatingActionButton
+    android:id="@+id/fab"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/fab_margin"
+    android:src="@drawable/ic_share_24dp"
+    android:tint="@android:color/white"
+    app:layout_anchor="@id/appbar"
+    app:layout_anchorGravity="bottom|end|right"
+    />
+
+</android.support.design.widget.CoordinatorLayout>
