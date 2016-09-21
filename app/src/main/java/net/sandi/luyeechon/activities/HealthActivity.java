@@ -1,6 +1,8 @@
 package net.sandi.luyeechon.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -12,15 +14,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import net.sandi.luyeechon.R;
+import net.sandi.luyeechon.data.HealthVO;
+import net.sandi.luyeechon.data.JokeVO;
 import net.sandi.luyeechon.fragments.HealthFragment;
+import net.sandi.luyeechon.fragments.JokeFragment;
+import net.sandi.luyeechon.fragments.MotivatorFragment;
 import net.sandi.luyeechon.utils.MMFontUtils;
+import net.sandi.luyeechon.views.holders.HealthViewHolder;
+import net.sandi.luyeechon.views.holders.JokeViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HealthActivity extends AppCompatActivity {
+public class HealthActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,HealthViewHolder.ControllerHealthItem,JokeViewHolder.ControllerJokeItem{
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -49,6 +58,7 @@ public class HealthActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
         Menu leftMenu = navigationView.getMenu();
         MMFontUtils.applyMMFontToMenu(leftMenu);
 
@@ -61,10 +71,11 @@ public class HealthActivity extends AppCompatActivity {
             }
         });
 
-        HealthFragment healthFragment = HealthFragment.newInstance();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fl_container, healthFragment)
-                .commit();
+        if (savedInstanceState == null) {
+            navigateToMotivator();
+        }
+
+
     }
 
     @Override
@@ -93,5 +104,71 @@ public class HealthActivity extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(final MenuItem item) {
+        item.setChecked(true);
+        drawerLayout.closeDrawers();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (item.getItemId()) {
+                    case R.id.menu_health_topics:
+                        navigateToHealth();
+                        break;
+                    case R.id.menu_quiz:
+                        navigateToQuiz();
+                        break;
+                    case R.id.menu_sate_khon_arr:
+                        navigateToMotivator();
+                        break;
+                    case R.id.menu_short_jokes:
+                        navigateToJoke();
+                        break;
+
+
+                }
+            }
+        }, 100); //to close drawer smoothly.
+
+        return true;
+    }
+    public void navigateToHealth(){
+        HealthFragment healthFragment = HealthFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container, healthFragment)
+                .commit();
+    }
+    public void navigateToJoke(){
+        JokeFragment jokeFragment = JokeFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container,jokeFragment)
+                .commit();
+    }
+    public void navigateToQuiz(){
+        Intent intent = QuizActivity.newIntent();
+        startActivity(intent);
+    }
+
+    public void navigateToMotivator(){
+        MotivatorFragment motivatorFragment = MotivatorFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container,motivatorFragment)
+                .commit();
+    }
+
+    @Override
+    public void onTapHealth(HealthVO health, ImageView ivAttraction) {
+        Intent intent = HealthDetailActivity.newIntent(health);
+        startActivity(intent);
+
+    }
+
+    @Override
+    public void onTapJoke(JokeVO joke, ImageView ivJoke) {
+        Intent intent = JokeDetailActivity.newIntent(joke);
+        startActivity(intent);
     }
 }

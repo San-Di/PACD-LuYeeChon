@@ -8,11 +8,6 @@
         android:checked="true"
         />
     <item
-        android:id="@+id/menu_health_topics"
-        android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="Short Health Topics"/>
-
-    <item
         android:id="@+id/menu_short_jokes"
         android:icon="@drawable/ic_assignment_ind_black_24dp"
         android:title="Short Jokes"/>
@@ -20,5 +15,9 @@
         android:id="@+id/menu_quiz"
         android:icon="@drawable/ic_assignment_ind_black_24dp"
         android:title="Pop Qiz"/>
+    <item
+        android:id="@+id/menu_health_topics"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Short Health Topics"/>
 </group>
 </menu>
