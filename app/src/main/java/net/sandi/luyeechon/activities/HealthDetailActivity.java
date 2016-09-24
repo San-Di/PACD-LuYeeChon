@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import net.sandi.luyeechon.LuYeeChonApp;
 import net.sandi.luyeechon.R;
-import net.sandi.luyeechon.data.HealthVO;
+import net.sandi.luyeechon.data.vos.HealthVO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,8 +76,7 @@ public class HealthDetailActivity extends AppCompatActivity {
         });
 
         mAttractionTitle = getIntent().getStringExtra(IE_HEALTH_TOPIC_NAME);
-        tvAttractionDesc.setText(mHealth.getHealthDes() + "\n\n"
-                + mHealth.getHealthDes());
+        tvAttractionDesc.setText(mHealth.getHealthDes() );
         collapsingToolbar.setTitle(mAttractionTitle);
 
         /*

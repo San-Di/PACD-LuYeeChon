@@ -34,7 +34,7 @@
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
-                android:src="@drawable/joke1" />
+                android:src="@drawable/joke2" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar_joke"

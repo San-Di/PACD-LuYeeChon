@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by UNiQUE on 9/20/2016.
  */
-public class HealthTopicListAdapter extends BaseAdapter {
+public class HealthTopicListAdapter extends BaseAdapter{
 
     private List<String> mHealthTopicsList;
     private LayoutInflater mInflater;
@@ -57,5 +57,7 @@ public class HealthTopicListAdapter extends BaseAdapter {
 
         return convertView;
     }
+
+
 }
 

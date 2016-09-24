@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import net.sandi.luyeechon.LuYeeChonApp;
 import net.sandi.luyeechon.R;
-import net.sandi.luyeechon.data.JokeVO;
+import net.sandi.luyeechon.data.vos.JokeVO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,8 +70,7 @@ public class JokeDetailActivity extends AppCompatActivity {
         });
 
         mJokeTitle = getIntent().getStringExtra(IE_JOKE_TOPIC_NAME);
-        tvJokeDes.setText(mJoke.getJokeDes() + "\n\n"
-                + mJoke.getJokeDes());
+        tvJokeDes.setText(mJoke.getJokeDes());
         collapsingToolbarJoke.setTitle(mJokeTitle);
 
         /*
@@ -105,8 +104,7 @@ public class JokeDetailActivity extends AppCompatActivity {
         //overridePendingTransition(R.anim.pop_enter, R.anim.pop_exit);
     }
     private void bindData(JokeVO jokeVO) {
-        tvJokeDes.setText(jokeVO.getJokeDes() + "\n\n"
-                + jokeVO.getJokeDes());
+        tvJokeDes.setText(jokeVO.getJokeDes());
 
         /*
         String imageUrl = MyanmarAttractionsConstants.IMAGE_ROOT_DIR + attraction.getImages()[0];

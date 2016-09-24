@@ -1,12 +1,22 @@
-package net.sandi.luyeechon.data;
+package net.sandi.luyeechon.data.vos;
+
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by UNiQUE on 9/18/2016.
  */
 public class HealthVO {
 
+    @SerializedName("type")
+    private String type;
+
+    @SerializedName("health_title")
     private String healthTitle;
+
+    @SerializedName("health_des")
     private String healthDes;
+
+    @SerializedName("health_photo")
     private String image;
 
     public HealthVO(String healthTitle, String healthDes, String image) {
@@ -32,5 +42,9 @@ public class HealthVO {
 
     public String getImage() {
         return image;
+    }
+
+    public String getType() {
+        return type;
     }
 }

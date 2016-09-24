@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.sandi.luyeechon.R;
-import net.sandi.luyeechon.data.JokeVO;
+import net.sandi.luyeechon.data.vos.JokeVO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +20,7 @@ public class JokeViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     TextView txtJokeTitle;
 
     @BindView(R.id.iv_joke_photo)
-    ImageView ivHealth;
+    ImageView ivJoke;
 
 
     private JokeVO mJoke;
@@ -41,7 +41,7 @@ public class JokeViewHolder extends RecyclerView.ViewHolder implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        mController.onTapJoke(mJoke,ivHealth);
+        mController.onTapJoke(mJoke,ivJoke);
     }
 
     public interface ControllerJokeItem {

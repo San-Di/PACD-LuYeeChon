@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -17,8 +16,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import net.sandi.luyeechon.R;
-import net.sandi.luyeechon.data.HealthVO;
-import net.sandi.luyeechon.data.JokeVO;
+import net.sandi.luyeechon.data.vos.HealthVO;
+import net.sandi.luyeechon.data.vos.JokeVO;
 import net.sandi.luyeechon.fragments.HealthFragment;
 import net.sandi.luyeechon.fragments.JokeFragment;
 import net.sandi.luyeechon.fragments.MotivatorFragment;
@@ -50,10 +49,12 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
 
         final ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(false);
+            actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
             actionBar.setDisplayHomeAsUpEnabled(true);
+
         }
+        actionBar.setTitle(R.string.app_name);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
@@ -66,8 +67,9 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                navigateToQuiz();
             }
         });
 
@@ -119,7 +121,7 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
                         navigateToHealth();
                         break;
                     case R.id.menu_quiz:
-                        navigateToQuiz();
+//                        navigateToQuiz();
                         break;
                     case R.id.menu_sate_khon_arr:
                         navigateToMotivator();

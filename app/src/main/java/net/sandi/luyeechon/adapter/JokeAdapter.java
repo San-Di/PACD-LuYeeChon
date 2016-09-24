@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import net.sandi.luyeechon.LuYeeChonApp;
 import net.sandi.luyeechon.R;
-import net.sandi.luyeechon.data.JokeVO;
+import net.sandi.luyeechon.data.vos.JokeVO;
 import net.sandi.luyeechon.views.holders.JokeViewHolder;
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 10;
+        return jokeVOList.size();
     }
 }
 

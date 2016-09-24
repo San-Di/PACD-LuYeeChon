@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import net.sandi.luyeechon.LuYeeChonApp;
 import net.sandi.luyeechon.R;
-import net.sandi.luyeechon.data.HealthVO;
+import net.sandi.luyeechon.data.vos.HealthVO;
 import net.sandi.luyeechon.views.holders.HealthViewHolder;
 
 import java.util.List;

@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.sandi.luyeechon.R;
-import net.sandi.luyeechon.data.HealthVO;
+import net.sandi.luyeechon.data.vos.HealthVO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

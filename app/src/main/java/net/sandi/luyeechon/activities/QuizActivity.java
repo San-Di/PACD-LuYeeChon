@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,6 +19,9 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * Created by Kaung Htet Lin on 9/18/2016.
+ */
 public class QuizActivity extends AppCompatActivity {
 
     final String[][] QandAns = {
@@ -26,11 +31,6 @@ public class QuizActivity extends AppCompatActivity {
             {"ေရကို ဘယ္အခ်ိန္ျခင္းေတာင္းထဲ\nထည့္သယ္လို႔ရမလဲ?", "ေရခဲေနတဲ့အခ်ိန္", "ခဲေနတဲ့အခ်ိန္", "ေရခဲ"},
             {"ေယာက်္ားျဖစ္ပါလၽွက္နဲ႔ \nနာမည္ေရွ႕မွာ 'မ' ပါေနတဲ့ \nေရွးေခတ္ပညာရွိ တစ္ေယာက္ကို\nသိပါသလား?", "မေဟာ္သဓာပညာရွိ", "မေဟာ္သဓာ", "ooo"}
     };
-
-    public static Intent newIntent() {
-        Intent intent = new Intent(LuYeeChonApp.getContext(), QuizActivity.class);
-        return intent;
-    }
 
     int randomNum;
 
@@ -45,6 +45,9 @@ public class QuizActivity extends AppCompatActivity {
 
     @BindView(R.id.btn_done)
     Button btnDone;
+
+    @BindView(R.id.btn_skip)
+    Button btnSkip;
 
     @Override
     protected void onStart() {
@@ -61,23 +64,38 @@ public class QuizActivity extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                txtResult.setVisibility(View.VISIBLE);
                 String ans = etAnswer.getText().toString();
 
                 if (btnDone.getText().toString().equalsIgnoreCase("next")) {
                     setData();
                 } else {
                     if (check(ans)) {
+                        btnSkip.setVisibility(View.INVISIBLE);
+                        txtResult.setVisibility(View.VISIBLE);
                         txtResult.setText("Your answer is true");
                         btnDone.setText("Next");
 
                     } else {
-                        txtResult.setText("Your answer is false,\nPlease Try Again");
+                        //  txtResult.setText("Your answer is false,\nPlease Try Again");
+
+                        btnSkip.setVisibility(View.VISIBLE);
+
                         etAnswer.setText("");
+                        etAnswer.setHint("Your answer is false");
+                        Animation shake = AnimationUtils.loadAnimation(QuizActivity.this, R.anim.shake);
+                        etAnswer.startAnimation(shake);
 
                     }
                 }
+            }
+        });
 
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnSkip.setVisibility(View.INVISIBLE);
+                etAnswer.setHint(R.string.et_hint);
+                setData();
             }
         });
 
@@ -102,6 +120,10 @@ public class QuizActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+    public static Intent newIntent() {
+        Intent intent = new Intent(LuYeeChonApp.getContext(), QuizActivity.class);
+        return intent;
     }
 
 }
