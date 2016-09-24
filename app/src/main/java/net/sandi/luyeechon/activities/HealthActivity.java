@@ -69,7 +69,7 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
             public void onClick(View view) {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
-                navigateToQuiz();
+//                navigateToQuiz();
             }
         });
 
@@ -79,6 +79,7 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
 
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -121,7 +122,7 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
                         navigateToHealth();
                         break;
                     case R.id.menu_quiz:
-//                        navigateToQuiz();
+                        navigateToQuiz();
                         break;
                     case R.id.menu_sate_khon_arr:
                         navigateToMotivator();

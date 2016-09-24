@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import net.sandi.luyeechon.R;
 import net.sandi.luyeechon.data.vos.JokeVO;
 
@@ -36,6 +38,12 @@ public class JokeViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     public void setData(JokeVO joke) {
         this.mJoke = joke;
         txtJokeTitle.setText(mJoke.getJokeTitle());
+
+        Glide.with(ivJoke.getContext())
+                .load(joke.getImageJoke())
+                .centerCrop()
+                .placeholder(R.drawable.lime)
+                .into(ivJoke);
 
     }
 

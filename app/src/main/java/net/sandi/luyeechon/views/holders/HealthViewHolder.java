@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import net.sandi.luyeechon.R;
 import net.sandi.luyeechon.data.vos.HealthVO;
 
@@ -42,6 +44,11 @@ public class HealthViewHolder extends RecyclerView.ViewHolder  implements View.O
         txtHealthTitle.setText(mHealth.getHealthTitle());
         txtHealthDes.setText(mHealth.getHealthDes());
 
+        Glide.with(ivHealth.getContext())
+                .load(health.getImage())
+                .centerCrop()
+                .placeholder(R.drawable.lime)
+                .into(ivHealth);
     }
 
     @Override
