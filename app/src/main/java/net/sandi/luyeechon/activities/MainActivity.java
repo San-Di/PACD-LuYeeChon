@@ -2,6 +2,7 @@ package net.sandi.luyeechon.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,12 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 
 import net.sandi.luyeechon.R;
+import net.sandi.luyeechon.adapters.MotivatorAdapter;
+import net.sandi.luyeechon.data.vos.MotivatorVO;
+import net.sandi.luyeechon.fragments.MotivatorFragment;
 import net.sandi.luyeechon.utils.MMFontUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -27,8 +33,15 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+//    @BindView(R.id.rv_motivator)
+//    RecyclerView rvMotivator;
+
     @BindView(R.id.navigation_view)
     NavigationView navigationView;
+
+    private MotivatorAdapter mMotivatorAdapter;
+    private List<MotivatorVO> motivatorVOs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +69,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(MainActivity.this,HealthDetailActivty.class));
+                //startActivity(new Intent(MainActivity.this,QuizActivity.class));
+
+                Intent intent=QuizActivity.newIntent();
+                startActivity(intent);
+
                 /*
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
             }
         });
+
+        MotivatorFragment motivatorFragment = MotivatorFragment.newInstance();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container,motivatorFragment)
+                .commit();
 
     }
 
@@ -88,8 +110,36 @@ public class MainActivity extends AppCompatActivity {
                 return true;
         }
 
-
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(final MenuItem item) {
+        item.setChecked(true);
+        drawerLayout.closeDrawers();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                switch (item.getItemId()) {
+                    case R.id.menu_health_topics:
+                    //    navigateToHealth();
+                        break;
+                    case R.id.menu_quiz:
+                    //    navigateToQuiz();
+                        break;
+                    case R.id.menu_sate_khon_arr:
+                   //     navigateToMotivator();
+                        break;
+                    case R.id.menu_short_jokes:
+                   //     navigateToJoke();
+                        break;
+
+
+                }
+            }
+        }, 100); //to close drawer smoothly.
+
+        return true;
     }
 }

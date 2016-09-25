@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Lu Yee Chon</string>
     <string name="action_settings">Settings</string>
+    <string name="txt_references">References</string>
+
+    <!--string for quiz-->
+    <string name="et_hint">Enter your answer</string>
+    <string name="btn_show_ans">Show Answer</string>
+    <string name="btn_done">Confirm</string>
+    <string name="btn_show">Show Answer</string>
+    <string name="btn_next">Next</string>
+    <string name="txt_ans">Answer :</string>
+    <string name="txt_true">Your answer is true</string>
+    <string name="txt_false">Your answer is false</string>
+
 </resources>
