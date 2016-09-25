@@ -30,7 +30,8 @@
         <activity android:name=".activities.QuizActivity"
             android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme"
-            android:label="Quiz"/>
+            android:label="Quiz"
+            android:windowSoftInputMode="adjustResize"/>
 
     </application>
 

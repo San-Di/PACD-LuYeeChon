@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <net.sandi.luyeechon.components.MMTextView
@@ -60,5 +60,13 @@
         android:layout_margin="@dimen/margin_medium_2"
         android:text="@string/btn_show"
         android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/iv_think"
+        android:layout_below="@id/btn_done"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/thinking_quiz" />
+
 
 </RelativeLayout>

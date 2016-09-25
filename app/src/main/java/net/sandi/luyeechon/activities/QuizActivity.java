@@ -54,6 +54,7 @@ public class QuizActivity extends AppCompatActivity {
     //String [][] QandAns=quizVOList.toArray();
 
     int randomNum;
+    int trueCount=0;
 
     @BindView(R.id.txt_question)
     TextView txtQuestion;
@@ -148,9 +149,15 @@ public class QuizActivity extends AppCompatActivity {
         ;
 
         if (ans.equalsIgnoreCase(s1) || ans.contains(s2)) {
+            trueCount++;
             return true;
         }
         return false;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        
+    }
 }
