@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -163,9 +166,15 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
     }
 
     @Override
-    public void onTapHealth(HealthVO health, ImageView ivAttraction) {
+    public void onTapHealth(HealthVO health, ImageView ivHealth) {
         Intent intent = HealthDetailActivity.newIntent(health);
-        startActivity(intent);
+//        startActivity(intent);
+
+
+        ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                new Pair(ivHealth, getString(R.string.health_list_detail_name)));
+        ActivityCompat.startActivity(this, intent, activityOptions.toBundle());
+
 
     }
 

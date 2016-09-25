@@ -28,7 +28,7 @@
     <ImageView
         android:id="@+id/iv_health_photo"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="160dp"
         android:scaleType="centerCrop"
         android:layout_marginTop="@dimen/margin_medium"
         android:adjustViewBounds="true"

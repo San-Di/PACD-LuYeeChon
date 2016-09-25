@@ -40,7 +40,7 @@ public class MotivatorAdapter extends RecyclerView.Adapter<MotivatorViewHolder> 
 
     @Override
     public int getItemCount() {
-        return 20;
+        return mMotivatorList.size();
     }
 
 }

@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import net.sandi.luyeechon.LuYeeChonApp;
 import net.sandi.luyeechon.R;
 import net.sandi.luyeechon.data.vos.JokeVO;
@@ -71,6 +73,12 @@ public class JokeDetailActivity extends AppCompatActivity {
 
         mJokeTitle = getIntent().getStringExtra(IE_JOKE_TOPIC_NAME);
         tvJokeDes.setText(mJoke.getJokeDes());
+
+        Glide.with(ivJoke.getContext())
+                .load(mJoke.getImageJoke())
+                .centerCrop()
+                .placeholder(R.drawable.lime)
+                .into(ivJoke);
         collapsingToolbarJoke.setTitle(mJokeTitle);
 
         /*

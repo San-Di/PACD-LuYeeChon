@@ -2,6 +2,9 @@
     <string name="app_name">Lu Yee Chon</string>
     <string name="action_settings">Settings</string>
 
+    <string name="health_list_detail_name">health_list_detail_name</string>
+    <string name="joke_list_detail_name">joke_list_detail_name</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -23,19 +26,26 @@
 ကိုးကား - Healthy Food House
 အစြမ္းထက္ သဘာ၀ေဆးနည္းမ်ား</string>
     <string name="health_title">သံပုရာခြံ</string>
-
-    <!--string for quiz-->
-    <string name="et_hint">Enter your answer</string>
-    <string name="btn_show_ans">Show Answer</string>
-    <string name="btn_done">Confirm</string>
-    <string name="detail_health">Detail Health</string>
-
-
     <string-array name="health_array">
         <item>ေရာဂါပိုးမြွားမ်ားအေျကာင္း</item>
         <item>ေဆးဖက္၀င္သီးနွံမ်ားအေျကာင္း</item>
         <item>နာတာရွည္ေရာဂါနွင့္ေဝဒနာမ်ားအေျကာင္း</item>
     </string-array>
+
+
+
+    <!--string for quiz-->
+    <string name="et_hint">Enter your answer</string>
+    <string name="btn_show_ans">Show Answer</string>
+    <string name="btn_done">Confirm</string>
+    <string name="btn_show">Show Answer</string>
+    <string name="btn_next">Next</string>
+    <string name="txt_ans">Answer :</string>
+    <string name="txt_true">Your answer is true</string>
+    <string name="txt_false">Your answer is false</string>
+
+
+
 
 
     <!-- string for jokes-->

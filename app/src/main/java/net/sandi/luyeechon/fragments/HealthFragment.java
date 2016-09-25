@@ -132,4 +132,12 @@ public class HealthFragment extends Fragment {
         rvHealth.setLayoutManager(new GridLayoutManager(getContext(), columnSpanCount));
 
     }
+//    public void onEventMainThread(DataEvent.HealthDataLoadedEvent health) {
+//        String extra = health.getExtraMessage();
+//        Toast.makeText(getContext(), "Extra : " + extra, Toast.LENGTH_SHORT).show();
+//
+//        //List<AttractionVO> newAttractionList = AttractionModel.getInstance().getAttractionList();
+//        List<HealthVO> newHealthList = health.getAttractionList();
+//        mHealthAdapter.setNewData(newHealthList);
+//    }
 }

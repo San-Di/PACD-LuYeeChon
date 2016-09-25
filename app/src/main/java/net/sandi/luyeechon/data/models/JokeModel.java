@@ -1,5 +1,7 @@
 package net.sandi.luyeechon.data.models;
 
+import android.util.Log;
+
 import com.google.gson.reflect.TypeToken;
 
 import net.sandi.luyeechon.data.vos.JokeVO;
@@ -43,11 +45,13 @@ public class JokeModel {
             Type listType = new TypeToken<List<JokeVO>>() {
             }.getType();
             jokeList = CommonInstances.getGsonInstance().fromJson(dummyJokeList, listType);
+            Log.d("TAG",jokeList.size()+"");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return jokeList;
     }
 

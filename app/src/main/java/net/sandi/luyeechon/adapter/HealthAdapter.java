@@ -46,4 +46,9 @@ public class HealthAdapter extends RecyclerView.Adapter<HealthViewHolder> {
     public int getItemCount() {
         return healthList.size();
     }
+
+    public void setNewData(List<HealthVO> newHealthList) {
+        healthList = newHealthList;
+        notifyDataSetChanged();
+    }
 }

@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 
 import net.sandi.luyeechon.R;
 import net.sandi.luyeechon.adapter.MotivatorAdapter;
+import net.sandi.luyeechon.data.models.MotivatorModel;
 import net.sandi.luyeechon.data.vos.MotivatorVO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,10 +26,11 @@ public class MotivatorFragment extends Fragment {
     private List<MotivatorVO> motivatorVOs;
 
     public MotivatorFragment() {
-        motivatorVOs = new ArrayList<MotivatorVO>();
+        motivatorVOs= MotivatorModel.getInstance().getMotivatorList();
+       /* motivatorVOs = new ArrayList<MotivatorVO>();
         for (int i = 0; i < 20; i++) {
             motivatorVOs.add(new MotivatorVO("http://www.aungpyaephyo.xyz/phandeeyar_events/dummy_event_pic_2_small.png"));
-        }
+        }*/
     }
 
     public static MotivatorFragment newInstance() {
@@ -41,11 +42,10 @@ public class MotivatorFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_motivator, container, false);
         mMotivatorAdapter = new MotivatorAdapter(motivatorVOs);
-        RecyclerView rvMotivator = (RecyclerView)view.findViewById(R.id.rv_motivator);
+        RecyclerView rvMotivator = (RecyclerView) view.findViewById(R.id.rv_motivator);
         rvMotivator.setAdapter(mMotivatorAdapter);
+
         rvMotivator.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-
-
 
         return view;
     }

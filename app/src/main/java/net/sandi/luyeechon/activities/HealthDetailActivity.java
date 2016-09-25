@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,10 +13,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import net.sandi.luyeechon.LuYeeChonApp;
 import net.sandi.luyeechon.R;
 import net.sandi.luyeechon.data.vos.HealthVO;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -37,10 +41,12 @@ public class HealthDetailActivity extends AppCompatActivity {
     TextView tvAttractionDesc;
 
     @BindView(R.id.iv_attraction)
-    ImageView ivAttraction;
+    ImageView ivHealth;
 
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout collapsingToolbar;
+
+    @BindString(R.string.health_list_detail_name) String HEALTH_IMAGE_TRANSITION_NAME;
 
     private String mAttractionTitle;
     private static HealthVO mHealth;
@@ -61,6 +67,8 @@ public class HealthDetailActivity extends AppCompatActivity {
 
         ButterKnife.bind(this, this);
 
+        ViewCompat.setTransitionName(ivHealth, HEALTH_IMAGE_TRANSITION_NAME);
+
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
@@ -77,6 +85,13 @@ public class HealthDetailActivity extends AppCompatActivity {
 
         mAttractionTitle = getIntent().getStringExtra(IE_HEALTH_TOPIC_NAME);
         tvAttractionDesc.setText(mHealth.getHealthDes() );
+
+        Glide.with(ivHealth.getContext())
+                .load(mHealth.getImage())
+                .centerCrop()
+                .placeholder(R.drawable.lime)
+                .into(ivHealth);
+
         collapsingToolbar.setTitle(mAttractionTitle);
 
         /*
@@ -113,15 +128,11 @@ public class HealthDetailActivity extends AppCompatActivity {
         tvAttractionDesc.setText(healthVO.getHealthDes() + "\n\n"
                 + healthVO.getHealthDes());
 
-        /*
-        String imageUrl = MyanmarAttractionsConstants.IMAGE_ROOT_DIR + attraction.getImages()[0];
-        Glide.with(ivAttraction.getContext())
-                .load(imageUrl)
+        Glide.with(ivHealth.getContext())
+                .load(healthVO.getImage())
                 .centerCrop()
-                .placeholder(R.drawable.stock_photo_placeholder)
-                .error(R.drawable.stock_photo_placeholder)
-                .into(ivAttraction);
-                */
+                .placeholder(R.drawable.lime)
+                .into(ivHealth);
 
         collapsingToolbar.setTitle(mAttractionTitle);
     }

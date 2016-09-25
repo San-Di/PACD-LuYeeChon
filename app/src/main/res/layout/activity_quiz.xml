@@ -22,15 +22,26 @@
         android:layout_margin="@dimen/margin_medium_2"
         android:hint="@string/et_hint" />
 
-    <TextView
+    <net.sandi.luyeechon.components.textviews.MMTextView
+        android:id="@+id/txt_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_question"
+        android:layout_margin="@dimen/margin_medium_2"
+        android:text="@string/txt_ans"
+        android:textColor="@color/red"
+        android:textSize="@dimen/text_heading_1x"
+        android:visibility="invisible" />
+
+    <net.sandi.luyeechon.components.textviews.MMTextView
         android:id="@+id/txt_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_answer"
         android:layout_margin="@dimen/margin_medium_2"
-        android:visibility="invisible"
+        android:text="@string/btn_show_ans"
         android:textSize="@dimen/text_regular_3x"
-        android:text="@string/btn_show_ans" />
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/btn_done"
@@ -42,12 +53,12 @@
         android:text="@string/btn_done" />
 
     <Button
-        android:id="@+id/btn_skip"
+        android:id="@+id/btn_show"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_answer"
         android:layout_margin="@dimen/margin_medium_2"
-        android:visibility="invisible"
-        android:text="@string/btn_skip"/>
+        android:text="@string/btn_show"
+        android:visibility="invisible" />
 
 </RelativeLayout>

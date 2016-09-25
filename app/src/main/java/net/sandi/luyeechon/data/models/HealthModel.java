@@ -55,4 +55,22 @@ public class HealthModel {
     public List<HealthVO> getHealthVOList() {
         return healthVOList;
     }
+
+//    private void broadcastAttractionLoadedWithEventBus() {
+//        EventBus.getDefault().post(new DataEvent.HealthDataLoadedEvent("extra-in-broadcast", healthVOList));
+//    }
+    public void notifyHealthListLoaded(List<HealthVO> healthVOList) {
+        //Notify that the data is ready - using LocalBroadcast
+        this.healthVOList = healthVOList;
+
+        //keep the data in persistent layer.
+//        AttractionVO.saveAttractions(mAttractionList);
+
+//        broadcastAttractionLoadedWithEventBus();
+    }
+
+    public void notifyErrorInLoadingAttractions(String message) {
+
+    }
+
 }
