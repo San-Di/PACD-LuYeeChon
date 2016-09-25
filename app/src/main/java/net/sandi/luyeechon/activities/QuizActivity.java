@@ -28,13 +28,6 @@ import butterknife.ButterKnife;
 public class QuizActivity extends AppCompatActivity {
 
     private static List<QuizVO> quizVOList;
-    /* private JokeAdapter mJokeAdpater;
-        private JokeViewHolder.ControllerJokeItem mControllerJoke;
-    */
-    // List<QuizVO> quizVOList;
-    /*public QuizActivity() {
-       // quizVOList= //QuizModel.getInstance().getJokeVOList();
-    }*/
 
     public static Intent newIntent() {
         quizVOList = QuizModel.getInstance().getQuizList();
@@ -42,16 +35,6 @@ public class QuizActivity extends AppCompatActivity {
         return intent;
     }
 
-   /* final String[][] QandAns = {
-            {"အာမထိလၽွာမထိၿမိဳ႕\n(စကားလံုးတစ္လံုးထက္ပိုရမည္)", "ဟဲဟိုး", "ooo"},
-            {"အဝတ္အစားမပါတဲ့ပိုးေကာင္", "ပိုးတံုးလံုး", "ပိုးတိုးလံုး"},
-            {"အမည္မွာက ခါးပါတယ္တဲ့၊\nစားၾကည့္ေတာ့ မခါးပါဘူး။\nအဲ့ဒါဘာမုန္႔လဲ?", "မုန္႔ဟင္းခါး", "ooo"},
-            {"ေရကို ဘယ္အခ်ိန္ျခင္းေတာင္းထဲ\nထည့္သယ္လို႔ရမလဲ?", "ေရခဲေနတဲ့အခ်ိန္", "ေရခဲ"},
-            {"ေယာက်္ားျဖစ္ပါလၽွက္နဲ႔ \nနာမည္ေရွ႕မွာ 'မ' ပါေနတဲ့ \nေရွးေခတ္ပညာရွိ တစ္ေယာက္ကို\nသိပါသလား?", "မေဟာ္သဓာပညာရွိ", "မေဟာ္သဓာ"}
-    };
-*/
-
-    //String [][] QandAns=quizVOList.toArray();
 
     int randomNum;
     int trueCount=0;
@@ -101,7 +84,6 @@ public class QuizActivity extends AppCompatActivity {
                         btnDone.setText(R.string.btn_next);
 
                     } else {
-                        //  txtResult.setText("Your answer is false,\nPlease Try Again");
 
                         btnShow.setVisibility(View.VISIBLE);
 
@@ -144,11 +126,11 @@ public class QuizActivity extends AppCompatActivity {
 
     public boolean check(String ans) {
 
-        String s1 = quizVOList.get(randomNum).getAnswer();
-        String s2 = quizVOList.get(randomNum).getContain();
-        ;
+        String answer = quizVOList.get(randomNum).getAnswer();
+        String contain = quizVOList.get(randomNum).getContain();
 
-        if (ans.equalsIgnoreCase(s1) || ans.contains(s2)) {
+
+        if (ans.equalsIgnoreCase(answer) || ans.contains(contain)) {
             trueCount++;
             return true;
         }
