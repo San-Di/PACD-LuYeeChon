@@ -43,4 +43,9 @@ public class MotivatorAdapter extends RecyclerView.Adapter<MotivatorViewHolder> 
         return mMotivatorList.size();
     }
 
+    public void setNewData(List<MotivatorVO> newMotivatorList) {
+        mMotivatorList = newMotivatorList;
+        notifyDataSetChanged();
+    }
+
 }

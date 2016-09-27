@@ -1,6 +1,7 @@
 package net.sandi.luyeechon.data.agents.retrofit;
 
 import net.sandi.luyeechon.data.agents.LuYeeChonDataAgent;
+import net.sandi.luyeechon.data.models.MotivatorModel;
 import net.sandi.luyeechon.data.responses.MotivatorListResponse;
 import net.sandi.luyeechon.utils.CommonInstances;
 import net.sandi.luyeechon.utils.LuYeeChonConstants;
@@ -55,15 +56,15 @@ public class RetrofitDataAgent implements LuYeeChonDataAgent{
             public void onResponse(Call<MotivatorListResponse> call, Response<MotivatorListResponse> response) {
                 MotivatorListResponse motivatorListResponse = response.body();
                 if (motivatorListResponse == null) {
-           //         MotivatorModel.getInstance().notifyErrorInLoadingAttractions(response.message());
+                    MotivatorModel.getInstance().notifyErrorInLoadingMotivator(response.message());
                 } else {
-           //         MotivatorModel.getInstance().notifyAttractionsLoaded(motivatorListResponse.getAttractionList());
+                   MotivatorModel.getInstance().notifyMotivatorLoaded(motivatorListResponse.getMotivatorList());
                 }
             }
 
             @Override
             public void onFailure(Call<MotivatorListResponse> call, Throwable throwable) {
-       //         MotivatorModel.getInstance().notifyErrorInLoadingAttractions(throwable.getMessage());
+                MotivatorModel.getInstance().notifyErrorInLoadingMotivator(throwable.getMessage());
             }
         });
     }

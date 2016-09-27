@@ -33,6 +33,12 @@
             android:label="Quiz"
             android:windowSoftInputMode="adjustResize"/>
 
+        <provider
+            android:authorities="net.sandi.luyeechon"
+            android:name=".data.persistence.LuYeeChonProvider"
+            android:exported="false"
+            android:syncable="true" />
+
     </application>
 
 </manifest>
