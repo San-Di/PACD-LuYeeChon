@@ -36,8 +36,8 @@ public class QuizActivity extends AppCompatActivity {
     }
 
 
-    int randomNum;
-    int trueCount=0;
+    int randomNum = 0;
+    int trueCount = 0;
 
     @BindView(R.id.txt_question)
     TextView txtQuestion;
@@ -68,6 +68,8 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         ButterKnife.bind(this, this);
+
+        randomNum = new Random().nextInt(quizVOList.size() - 0 + 1) + 0;
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +106,7 @@ public class QuizActivity extends AppCompatActivity {
                 etAnswer.setVisibility(View.INVISIBLE);
                 txtAnswer.setVisibility(View.VISIBLE);
 
-                txtAnswer.setText("Answer: "+quizVOList.get(randomNum).getAnswer());
+                txtAnswer.setText("Answer: " + quizVOList.get(randomNum).getAnswer());
                 etAnswer.setHint(R.string.et_hint);
                 btnDone.setText(R.string.btn_next);
             }
@@ -118,7 +120,11 @@ public class QuizActivity extends AppCompatActivity {
 
         etAnswer.setText("");
         etAnswer.setHint(R.string.et_hint);
-        randomNum = new Random().nextInt(quizVOList.size() - 0 + 1) + 0;
+        if (randomNum == quizVOList.size() - 1) {
+            randomNum = 0;
+        } else {
+            randomNum++;
+        }
         txtQuestion.setText(quizVOList.get(randomNum).getQuestion());
         btnDone.setText(R.string.btn_done);
         txtResult.setVisibility(View.INVISIBLE);
@@ -136,10 +142,17 @@ public class QuizActivity extends AppCompatActivity {
         }
         return false;
     }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        
-    }
+//
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        new AlertDialog.Builder(this)
+//                .setTitle("Scroe Point")
+//                .setMessage("point")
+//                .show();
+//        try {
+//            Thread.sleep(10000);
+//        } catch (Exception e) {
+//        }
+//    }
 }
