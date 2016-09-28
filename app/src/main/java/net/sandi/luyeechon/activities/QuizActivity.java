@@ -57,6 +57,9 @@ public class QuizActivity extends AppCompatActivity {
     @BindView(R.id.btn_show)
     Button btnShow;
 
+//    @BindView(R.id.tv_quiz_title)
+//    TextView tvQuizTitle;
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -69,6 +72,12 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         ButterKnife.bind(this, this);
 
+//        final ActionBar actionBar = getSupportActionBar();
+//        if (actionBar != null) {
+//            actionBar.setDisplayShowTitleEnabled(false);
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//        }
+//        tvQuizTitle.setText(R.string.txt_title_quiz);
         randomNum = new Random().nextInt(quizVOList.size() - 0 + 1) + 0;
 
         btnDone.setOnClickListener(new View.OnClickListener() {

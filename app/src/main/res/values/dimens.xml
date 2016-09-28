@@ -37,4 +37,6 @@
     <dimen name="pb_dimen">55dp</dimen>
     <dimen name="card_elevation">2dp</dimen>
 
+    <dimen name="screen_title_size">20sp</dimen>
+
 </resources>

@@ -13,4 +13,7 @@
     <string name="txt_true">Your answer is true</string>
     <string name="txt_false">Your answer is false</string>
 
+
+    <string name="txt_title_quiz">ဉာဏ္စမ္းပေဟဠိ</string>
+
 </resources>
