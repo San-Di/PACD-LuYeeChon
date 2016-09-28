@@ -8,6 +8,8 @@
     <!--<color name="primary_text">#000</color>-->
     <color name="white">#e7e1e1</color>
 
+    <color name="pure_white">#ffffff</color>
+
     <color name="primary">#03A9F4</color>
     <color name="primary_dark">#0288D1</color>
     <color name="primary_light">#B3E5FC</color>

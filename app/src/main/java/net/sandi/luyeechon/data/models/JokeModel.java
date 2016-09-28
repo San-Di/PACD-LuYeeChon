@@ -1,32 +1,30 @@
 package net.sandi.luyeechon.data.models;
 
-import android.util.Log;
+import android.widget.Toast;
 
-import com.google.gson.reflect.TypeToken;
-
+import net.sandi.luyeechon.LuYeeChonApp;
 import net.sandi.luyeechon.data.vos.JokeVO;
-import net.sandi.luyeechon.utils.CommonInstances;
-import net.sandi.luyeechon.utils.JsonUtils;
+import net.sandi.luyeechon.events.DataEvent;
 
-import org.json.JSONException;
-
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by UNiQUE on 9/23/2016.
  */
-public class JokeModel {
-    private static final String DUMMY_JOKE_LIST = "joke_list.json";
+public class JokeModel extends BaseModel{
+//    private static final String DUMMY_JOKE_LIST = "joke_list.json";
 
     private static JokeModel objInstance;
 
     private List<JokeVO> jokeVOList;
 
     private JokeModel(){
-        jokeVOList = initializeJokeList();
+        jokeVOList = new ArrayList<JokeVO>();
+        dataAgent.loadJokeList();
+
     }
 
     public static JokeModel getInstance(){
@@ -37,25 +35,29 @@ public class JokeModel {
         return objInstance;
     }
 
-    private List<JokeVO> initializeJokeList() {
-        List<JokeVO> jokeList = new ArrayList<>();
-
-        try {
-            String dummyJokeList = JsonUtils.getInstance().loadDummyData(DUMMY_JOKE_LIST);
-            Type listType = new TypeToken<List<JokeVO>>() {
-            }.getType();
-            jokeList = CommonInstances.getGsonInstance().fromJson(dummyJokeList, listType);
-            Log.d("TAG",jokeList.size()+"");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return jokeList;
-    }
-
     public List<JokeVO> getJokeVOList() {
         return jokeVOList;
+    }
+
+    private void broadcastJokesLoadedWithEventBus() {
+        EventBus.getDefault().post(new DataEvent.JokeDataLoadedEvent("extra-in-broadcast", jokeVOList));
+    }
+
+    public void notifyJokeListLoaded(List<JokeVO> jokeList) {
+        //Notify that the data is ready - using LocalBroadcast
+        this.jokeVOList = jokeList;
+        Toast.makeText(LuYeeChonApp.getContext(),jokeList.size()+"",Toast.LENGTH_LONG).show();
+        //keep the data in persistent layer.
+        JokeVO.saveJokes(jokeVOList);
+
+        broadcastJokesLoadedWithEventBus();
+    }
+
+    public void notifyErrorInLoadingJokes(String message) {
+
+    }
+
+    public void setStoredData(List<JokeVO> jokeList) {
+        jokeVOList = jokeList;
     }
 }

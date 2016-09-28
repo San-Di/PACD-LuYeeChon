@@ -85,6 +85,10 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         ButterKnife.bind(this, this);
 
+//        ScreenUtils keyborUtils = ScreenUtils.getObjInstance();
+//
+//        keyborUtils.showSoftKeyboard(etAnswer);
+
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

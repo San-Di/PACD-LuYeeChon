@@ -4,13 +4,13 @@
     <item
         android:id="@+id/menu_sate_khon_arr"
         android:icon="@drawable/ic_account_box_black_24dp"
-        android:title="Sate Khon Arr"
+        android:title="@string/menu_motivator"
         android:checked="true"
         />
     <item
         android:id="@+id/menu_short_jokes"
         android:icon="@drawable/ic_assignment_ind_black_24dp"
-        android:title="Short Jokes"/>
+        android:title="@string/menu_short_jokes"/>
     <item
         android:id="@+id/menu_quiz"
         android:icon="@drawable/ic_assignment_ind_black_24dp"
@@ -18,6 +18,6 @@
     <item
         android:id="@+id/menu_health_topics"
         android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="Short Health Topics"/>
+        android:title="@string/menu_health_topics"/>
 </group>
 </menu>

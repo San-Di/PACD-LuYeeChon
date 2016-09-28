@@ -2,14 +2,15 @@
     <string name="app_name">Lu Yee Chon</string>
     <string name="action_settings">Settings</string>
 
-    <string name="health_list_detail_name">health_list_detail_name</string>
-    <string name="joke_list_detail_name">joke_list_detail_name</string>
 
+
+    <string name="content_authority">net.sandi.luyeechon</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <!-- Health String -->
+    <!-- string for health -->
+    <string name="health_list_detail_name">health_list_detail_name</string>
     <string name="health_des">နာက်င္ျခင္းေတြအတြက္ သံပုရာခြံ
 ေလးဖက္နာ၊ အရိုးအဆစ္ ေရာင္ရမ္းနာ၊ ဒူလာ ေခၚ ေဂါက္ေရာဂါ၊ အရြတ္အေၾကာနာ စတဲ့ ေ၀ဒနာေတြကို ခံစားရလို႔ ေနရထိုင္ရ ကသိကေအာက္ ျဖစ္ရသူေတြအတြက္ သက္သာေစမယ့္ သတင္းေကာင္းတစ္ခုကေတာ့ သံပုရာခြံ ရွိဖို႔ပဲ လိုပါတယ္။
 သံပုရာ ဆိုတာ ဗစ္တာမင္ စီ ၾကြယ္၀တဲ့ပစၥည္းျဖစ္ၿပီး ေန႔စဥ္ ခႏၶာကိယ္အတြက္ ဗစ္တာမင္စီ လိုအပ္ခ်က္က ၃၁ ရာခိုင္ႏႈန္း ရွိပါတယ္။ ဗီတာမင္စီရဲ႕ ဂုဏ္သတၱိေတြက ေျပာမဆံုးေအာင္ မ်ားလွသလို သံပုရာသီး၊ သံပုရာခြံရဲ႕ ေဆးဖက္၀င္အစြမ္းေတြကလဲ သံုးမကုန္ေအာင္ က်ယ္ျပန္႔လွပါတယ္။ အဲ့ဒီထဲကမွ အရိုးအဆစ္ နာက်င္မႈေတြကို သံပုရာခြံက သက္သာေအာင္ ထိေရာက္ စြမ္းေဆာင္ေပးႏိုင္ပံုကို ေစာႏြဲ ့ေနဆိုင္-ပူတာအို ေပ့ခ်္ကေန မွ်ေ၀တင္ျပလိုက္ပါတယ္။
@@ -25,6 +26,7 @@
 ေစာႏြဲ႔ေနဆိုင္(ပူတာအို)
 ကိုးကား - Healthy Food House
 အစြမ္းထက္ သဘာ၀ေဆးနည္းမ်ား</string>
+
     <string name="health_title">သံပုရာခြံ</string>
     <string-array name="health_array">
         <item>ေရာဂါပိုးမြွားမ်ားအေျကာင္း</item>
@@ -47,8 +49,11 @@
 
 
 
+    <!-- string for motivator-->
+    <string name="menu_motivator">စိတ္ခြန္အားစာတိုမ်ား</string>
 
     <!-- string for jokes-->
+    <string name="joke_list_detail_name">joke_list_detail_name</string>
     <string name="joke_des">"မန္ယူဖန္ေတြကို အိမ္ေထာင္ဖက္အျဖစ္ေရြးခ်ယ္သင့္ေသာ အေၾကာင္းရင္း ၅ ခ်က္"
 မိန္းခေလးေတြအေနနဲ႔ အိမ္ေထာင္ျပဳေတာ့မယ္ဆိုရင္ မန္ယူဖန္ေတြကို ဦးစားေပးေရြးခ်ယ္သင့္ပါတယ္။ ဘာေၾကာင့္လဲဆိုေတာ့ -
 ၁။ မန္ဖန္ေတြ အေနနဲ႔ မန္ယူအသင္း ဘယ္ေလာက္ ကစားပံုညံ့ေန ညံ့ေန အသင္းႏိုင္ဖို႔က အဓိကပဲဆိုတဲ့ စိတ္နဲ႔ အားေပးၾကသလိုမ်ိဳး သူတို႔မိန္းမေတြ ခ်က္ျပဳတ္ေကြၽးေမြးတဲ့ ထမင္းဟင္း ဘယ္ေလာက္ညံ့ေန ညံ့ေန ညစာမငတ္ဖို႔က အဓိကပဲဆိုတဲ့ စိတ္နဲ႔ အားေပးၾကမယ္ဆိုတာ ေသခ်ာလို႔ပါ။
@@ -87,5 +92,8 @@
 ဒီပုိ႔စ္ကို မဖတ္ပဲ သူ like သြားျပန္ၿပီ ...။</string>
     <string name="joke_title2">ကိုရီးယားသီခ်င္းေတြက သူ႔အသည္းစြဲ...</string>
     <string name="btn_skip">skip</string>
+    <string name="menu_short_jokes">ဟာသတိုမ်ား</string>
+    <string name="menu_health_topics">က်န္းမာေရးေဆာင္းပါးမ်ား</string>
+
 
 </resources>

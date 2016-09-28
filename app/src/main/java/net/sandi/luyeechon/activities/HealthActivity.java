@@ -3,7 +3,6 @@ package net.sandi.luyeechon.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -15,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 
 import net.sandi.luyeechon.R;
@@ -42,6 +40,7 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
     @BindView(R.id.navigation_view)
     NavigationView navigationView;
 
+    ActionBar actionBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +50,7 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
         setSupportActionBar(toolbar);
 
         final ActionBar actionBar = getSupportActionBar();
+        this.actionBar=actionBar;
         if (actionBar != null) {
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
@@ -66,15 +66,7 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
         Menu leftMenu = navigationView.getMenu();
         MMFontUtils.applyMMFontToMenu(leftMenu);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//                navigateToQuiz();
-            }
-        });
+
 
         if (savedInstanceState == null) {
             navigateToMotivator();
@@ -142,12 +134,15 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
         return true;
     }
     public void navigateToHealth(){
+
+        actionBar.setTitle(R.string.menu_health_topics);
         HealthFragment healthFragment = HealthFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_container, healthFragment)
                 .commit();
     }
     public void navigateToJoke(){
+        actionBar.setTitle(R.string.menu_short_jokes);
         JokeFragment jokeFragment = JokeFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_container,jokeFragment)
@@ -159,6 +154,7 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
     }
 
     public void navigateToMotivator(){
+        actionBar.setTitle(R.string.menu_motivator);
         MotivatorFragment motivatorFragment = MotivatorFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_container,motivatorFragment)

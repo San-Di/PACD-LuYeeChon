@@ -28,7 +28,7 @@
 
 
             <ImageView
-                android:id="@+id/iv_attraction"
+                android:id="@+id/tv_health"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -41,7 +41,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+
+                <net.sandi.luyeechon.components.textviews.MMTextView
+                    android:id="@+id/tv_screen_title_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:textSize="@dimen/screen_title_size"
+
+                    />
+                </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -53,7 +64,7 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <net.sandi.luyeechon.components.textviews.MMTextView
-            android:id="@+id/tv_attraction_desc"
+            android:id="@+id/tv_health_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_small"
@@ -67,7 +78,7 @@
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"

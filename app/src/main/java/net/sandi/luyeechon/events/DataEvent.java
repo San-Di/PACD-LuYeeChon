@@ -1,6 +1,7 @@
 package net.sandi.luyeechon.events;
 
 import net.sandi.luyeechon.data.vos.HealthVO;
+import net.sandi.luyeechon.data.vos.JokeVO;
 
 import java.util.List;
 
@@ -21,8 +22,26 @@ public class DataEvent {
             return extraMessage;
         }
 
-        public List<HealthVO> getAttractionList() {
+        public List<HealthVO> getHealthList() {
             return healthList;
+        }
+    }
+
+    public static class JokeDataLoadedEvent{
+        private String extraMessage;
+        private List<JokeVO> jokeList;
+
+        public JokeDataLoadedEvent(String extraMessage, List<JokeVO> jokeList) {
+            this.extraMessage = extraMessage;
+            this.jokeList = jokeList;
+        }
+
+        public String getExtraMessage() {
+            return extraMessage;
+        }
+
+        public List<JokeVO> getJokeList() {
+            return jokeList;
         }
     }
 }

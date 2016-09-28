@@ -1,6 +1,17 @@
 package net.sandi.luyeechon.data.vos;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
+import android.widget.Toast;
+
 import com.google.gson.annotations.SerializedName;
+
+import net.sandi.luyeechon.LuYeeChonApp;
+import net.sandi.luyeechon.data.persistence.LuYeeChonContract;
+
+import java.util.List;
 
 /**
  * Created by UNiQUE on 9/19/2016.
@@ -27,6 +38,10 @@ public class JokeVO {
         this.jokeDes = jokeDes;
     }
 
+    public JokeVO(){}
+
+
+
     public String getJokeTitle() {
         return jokeTitle;
     }
@@ -37,5 +52,39 @@ public class JokeVO {
 
     public String getImageJoke() {
         return imageJoke;
+    }
+
+    public static void saveJokes(List<JokeVO> jokeList) {
+        Context context = LuYeeChonApp.getContext();
+        ContentValues[] jokeCVs = new ContentValues[jokeList.size()];
+        for (int index = 0; index < jokeList.size(); index++) {
+            JokeVO joke = jokeList.get(index);
+            jokeCVs[index] = joke.parseToContentValues();
+
+            Toast.makeText(context,"Saving "+joke.getJokeTitle(),Toast.LENGTH_LONG).show();
+            //Bulk insert into attraction_images.
+        }
+
+        //Bulk insert into attractions.
+        int insertedCount = context.getContentResolver().bulkInsert(LuYeeChonContract.JokeEntry.CONTENT_URI, jokeCVs);
+        Toast.makeText(context,"Count : "+insertedCount,Toast.LENGTH_LONG).show();
+
+        Log.d(LuYeeChonApp.TAG, "Bulk inserted into joke table : " + insertedCount);
+    }
+
+    private ContentValues parseToContentValues() {
+        ContentValues cv = new ContentValues();
+        cv.put(LuYeeChonContract.JokeEntry.COLUMN_TITLE, jokeTitle);
+        cv.put(LuYeeChonContract.JokeEntry.COLUMN_DESC, jokeDes);
+        cv.put(LuYeeChonContract.JokeEntry.COLUMN_PHOTO,imageJoke);
+        return cv;
+    }
+
+    public static JokeVO parseFromCursor(Cursor data) {
+        JokeVO joke = new JokeVO();
+        joke.jokeTitle = data.getString(data.getColumnIndex(LuYeeChonContract.JokeEntry.COLUMN_TITLE));
+        joke.jokeDes = data.getString(data.getColumnIndex(LuYeeChonContract.JokeEntry.COLUMN_DESC));
+        joke.imageJoke = data.getString(data.getColumnIndex(LuYeeChonContract.JokeEntry.COLUMN_PHOTO));
+        return joke;
     }
 }
