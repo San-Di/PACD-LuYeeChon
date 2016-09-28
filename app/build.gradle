@@ -30,7 +30,11 @@ dependencies {
     compile 'com.android.support:design:24.0.0'
     compile 'com.jakewharton:butterknife:8.1.0'
 <<<<<<< HEAD
+<<<<<<< HEAD
     compile 'com.android.support:support-v4:24.0.0'
+=======
+  //  compile 'com.android.support:support-v4:24.0.0'
+>>>>>>> 14c770dc113bcb156beabf2c38c43dec07aab0ba
     compile 'com.android.support:cardview-v7:24.0.0'
     compile 'com.android.support:recyclerview-v7:24.0.0'
     compile 'com.google.code.gson:gson:2.4'

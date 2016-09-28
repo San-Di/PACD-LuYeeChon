@@ -37,7 +37,7 @@
                 android:layout_marginLeft="@dimen/margin_large"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:textSize="@dimen/screen_title_size"
-
+                android:textColor="@color/pure_white"
                 />
             </android.support.v7.widget.Toolbar>
 =======
