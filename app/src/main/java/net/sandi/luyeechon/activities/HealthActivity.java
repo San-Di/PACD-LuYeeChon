@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import net.sandi.luyeechon.R;
 import net.sandi.luyeechon.data.vos.HealthVO;
@@ -40,6 +41,9 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
     @BindView(R.id.navigation_view)
     NavigationView navigationView;
 
+    @BindView(R.id.tv_screen_title)
+    TextView tvScreenTitle;
+
     ActionBar actionBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +56,7 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
         final ActionBar actionBar = getSupportActionBar();
         this.actionBar=actionBar;
         if (actionBar != null) {
-            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(false);
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
             actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -75,13 +79,12 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -135,14 +138,16 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
     }
     public void navigateToHealth(){
 
-        actionBar.setTitle(R.string.menu_health_topics);
+        tvScreenTitle.setText(R.string.menu_health_topics);
+      //  actionBar.setTitle(R.string.menu_health_topics);
         HealthFragment healthFragment = HealthFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_container, healthFragment)
                 .commit();
     }
     public void navigateToJoke(){
-        actionBar.setTitle(R.string.menu_short_jokes);
+        tvScreenTitle.setText(R.string.menu_short_jokes);
+      //  actionBar.setTitle(R.string.menu_short_jokes);
         JokeFragment jokeFragment = JokeFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_container,jokeFragment)
@@ -154,7 +159,8 @@ public class HealthActivity extends AppCompatActivity implements NavigationView.
     }
 
     public void navigateToMotivator(){
-        actionBar.setTitle(R.string.menu_motivator);
+        tvScreenTitle.setText(R.string.menu_motivator);
+      //  actionBar.setTitle(R.string.menu_motivator);
         MotivatorFragment motivatorFragment = MotivatorFragment.newInstance();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_container,motivatorFragment)
