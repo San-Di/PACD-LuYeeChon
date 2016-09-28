@@ -36,6 +36,9 @@
     <dimen name="dialog_button_height">35dp</dimen>
     <dimen name="pb_dimen">55dp</dimen>
     <dimen name="card_elevation">2dp</dimen>
+<<<<<<< HEAD
     <dimen name="screen_title_size">22sp</dimen>
+=======
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 
 </resources>

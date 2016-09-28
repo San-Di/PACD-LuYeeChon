@@ -49,4 +49,8 @@ public class MotivatorViewHolder extends RecyclerView.ViewHolder {
                 .into(ivMotivator);
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54

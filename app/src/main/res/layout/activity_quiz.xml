@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+<<<<<<< HEAD
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <net.sandi.luyeechon.components.textviews.MMTextView
+=======
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <net.sandi.luyeechon.components.MMTextView
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
         android:id="@+id/txt_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +21,11 @@
         android:textColor="@color/black_full"
         android:textSize="@dimen/text_heading_1x" />
 
+<<<<<<< HEAD
     <net.sandi.luyeechon.components.editexts.MMEditText
+=======
+    <net.sandi.luyeechon.components.MMEditText
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
         android:id="@+id/et_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +33,11 @@
         android:layout_margin="@dimen/margin_medium_2"
         android:hint="@string/et_hint" />
 
+<<<<<<< HEAD
     <net.sandi.luyeechon.components.textviews.MMTextView
+=======
+    <net.sandi.luyeechon.components.MMTextView
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
         android:id="@+id/txt_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +48,11 @@
         android:textSize="@dimen/text_heading_1x"
         android:visibility="invisible" />
 
+<<<<<<< HEAD
     <net.sandi.luyeechon.components.textviews.MMTextView
+=======
+    <net.sandi.luyeechon.components.MMTextView
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
         android:id="@+id/txt_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,4 +80,15 @@
         android:text="@string/btn_show"
         android:visibility="invisible" />
 
+<<<<<<< HEAD
+=======
+    <ImageView
+        android:id="@+id/iv_think"
+        android:layout_below="@id/btn_done"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/thinking_quiz" />
+
+
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 </RelativeLayout>

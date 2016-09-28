@@ -12,7 +12,11 @@
         android:id="@+id/iv_motivator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:src="@drawable/lime"
+=======
+        android:src="@drawable/lime_health"
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
         android:layout_marginTop="@dimen/margin_small"
         android:background="@color/white"/>
 

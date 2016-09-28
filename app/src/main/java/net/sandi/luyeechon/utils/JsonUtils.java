@@ -9,6 +9,10 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.io.InputStream;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 /**
  * Created by aung on 12/12/15.
  */

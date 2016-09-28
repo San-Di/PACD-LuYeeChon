@@ -3,6 +3,8 @@
     package="net.sandi.luyeechon">
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".LuYeeChonApp"
         android:allowBackup="true"
@@ -21,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity
+<<<<<<< HEAD
             android:name=".activities.QuizActivity"
             android:label="Quiz"
             android:parentActivityName=".activities.HealthActivity"
@@ -36,6 +39,25 @@
             android:name=".data.persistence.LuYeeChonProvider"
             android:exported="false"
             android:syncable="true" />
+=======
+            android:name=".activities.HealthDetailActivty"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Lu Yae Chon"/>
+
+        <activity android:name=".activities.QuizActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme"
+            android:label="Quiz"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <provider
+            android:authorities="net.sandi.luyeechon"
+            android:name=".data.persistence.LuYeeChonProvider"
+            android:exported="false"
+            android:syncable="true" />
+
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
     </application>
 
 </manifest>

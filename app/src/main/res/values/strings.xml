@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Lu Yee Chon</string>
     <string name="action_settings">Settings</string>
+<<<<<<< HEAD
 
 
 
@@ -35,6 +36,9 @@
     </string-array>
 
 
+=======
+    <string name="txt_references">References</string>
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 
     <!--string for quiz-->
     <string name="et_hint">Enter your answer</string>
@@ -46,6 +50,7 @@
     <string name="txt_true">Your answer is true</string>
     <string name="txt_false">Your answer is false</string>
 
+<<<<<<< HEAD
 
 
 
@@ -96,4 +101,6 @@
     <string name="menu_health_topics">က်န္းမာေရးေဆာင္းပါးမ်ား</string>
 
 
+=======
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 </resources>

@@ -28,6 +28,7 @@ import butterknife.ButterKnife;
 public class QuizActivity extends AppCompatActivity {
 
     private static List<QuizVO> quizVOList;
+<<<<<<< HEAD
     /* private JokeAdapter mJokeAdpater;
         private JokeViewHolder.ControllerJokeItem mControllerJoke;
     */
@@ -35,6 +36,8 @@ public class QuizActivity extends AppCompatActivity {
     /*public QuizActivity() {
        // quizVOList= //QuizModel.getInstance().getJokeVOList();
     }*/
+=======
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 
     public static Intent newIntent() {
         quizVOList = QuizModel.getInstance().getQuizList();
@@ -42,6 +45,7 @@ public class QuizActivity extends AppCompatActivity {
         return intent;
     }
 
+<<<<<<< HEAD
    /* final String[][] QandAns = {
             {"အာမထိလၽွာမထိၿမိဳ႕\n(စကားလံုးတစ္လံုးထက္ပိုရမည္)", "ဟဲဟိုး", "ooo"},
             {"အဝတ္အစားမပါတဲ့ပိုးေကာင္", "ပိုးတံုးလံုး", "ပိုးတိုးလံုး"},
@@ -54,6 +58,11 @@ public class QuizActivity extends AppCompatActivity {
     //String [][] QandAns=quizVOList.toArray();
 
     int randomNum;
+=======
+
+    int randomNum = 0;
+    int trueCount = 0;
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 
     @BindView(R.id.txt_question)
     TextView txtQuestion;
@@ -85,9 +94,13 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         ButterKnife.bind(this, this);
 
+<<<<<<< HEAD
 //        ScreenUtils keyborUtils = ScreenUtils.getObjInstance();
 //
 //        keyborUtils.showSoftKeyboard(etAnswer);
+=======
+        randomNum = new Random().nextInt(quizVOList.size() - 0 + 1) + 0;
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +117,10 @@ public class QuizActivity extends AppCompatActivity {
                         btnDone.setText(R.string.btn_next);
 
                     } else {
+<<<<<<< HEAD
                         //  txtResult.setText("Your answer is false,\nPlease Try Again");
+=======
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 
                         btnShow.setVisibility(View.VISIBLE);
 
@@ -125,7 +141,11 @@ public class QuizActivity extends AppCompatActivity {
                 etAnswer.setVisibility(View.INVISIBLE);
                 txtAnswer.setVisibility(View.VISIBLE);
 
+<<<<<<< HEAD
                 txtAnswer.setText("Answer: "+quizVOList.get(randomNum).getAnswer());
+=======
+                txtAnswer.setText("Answer: " + quizVOList.get(randomNum).getAnswer());
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
                 etAnswer.setHint(R.string.et_hint);
                 btnDone.setText(R.string.btn_next);
             }
@@ -139,7 +159,15 @@ public class QuizActivity extends AppCompatActivity {
 
         etAnswer.setText("");
         etAnswer.setHint(R.string.et_hint);
+<<<<<<< HEAD
         randomNum = new Random().nextInt(quizVOList.size() - 0 + 1) + 0;
+=======
+        if (randomNum == quizVOList.size() - 1) {
+            randomNum = 0;
+        } else {
+            randomNum++;
+        }
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
         txtQuestion.setText(quizVOList.get(randomNum).getQuestion());
         btnDone.setText(R.string.btn_done);
         txtResult.setVisibility(View.INVISIBLE);
@@ -147,14 +175,39 @@ public class QuizActivity extends AppCompatActivity {
 
     public boolean check(String ans) {
 
+<<<<<<< HEAD
         String s1 = quizVOList.get(randomNum).getAnswer();
         String s2 = quizVOList.get(randomNum).getContain();
         ;
 
         if (ans.equalsIgnoreCase(s1) || ans.contains(s2)) {
+=======
+        String answer = quizVOList.get(randomNum).getAnswer();
+        String contain = quizVOList.get(randomNum).getContain();
+
+
+        if (ans.equalsIgnoreCase(answer) || ans.contains(contain)) {
+            trueCount++;
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
             return true;
         }
         return false;
     }
+<<<<<<< HEAD
 
+=======
+//
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        new AlertDialog.Builder(this)
+//                .setTitle("Scroe Point")
+//                .setMessage("point")
+//                .show();
+//        try {
+//            Thread.sleep(10000);
+//        } catch (Exception e) {
+//        }
+//    }
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 }

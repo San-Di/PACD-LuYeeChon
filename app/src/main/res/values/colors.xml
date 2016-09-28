@@ -5,6 +5,7 @@
     <color name="colorAccent">#8BC34A</color>
     <color name="accent_dark">#882061</color>
     <color name="black_full">#F000</color>
+<<<<<<< HEAD
     <!--<color name="primary_text">#000</color>-->
     <color name="white">#e7e1e1</color>
 
@@ -20,4 +21,8 @@
     <color name="divider">#BDBDBD</color>
     <color name="red">#fa1a16</color>
 
+=======
+    <color name="white">#e7e1e1</color>
+    <color name="red">#fa1a16</color>
+>>>>>>> dc9c1a1913df04362c5b8108bd4831d705192a54
 </resources>

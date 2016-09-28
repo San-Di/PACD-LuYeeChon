@@ -217,7 +217,7 @@ public class HealthFragment extends Fragment implements LoaderManager.LoaderCall
                 null,
                 null,
                 null,
-                LuYeeChonContract.HealthEntry._ID + " DESC");
+                LuYeeChonContract.HealthEntry._ID + " ASC");
     }
 
 
