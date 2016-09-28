@@ -45,5 +45,10 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeViewHolder> {
     public int getItemCount() {
         return jokeVOList.size();
     }
+
+    public void setNewData(List<JokeVO> newJokeList) {
+        jokeVOList = newJokeList;
+        notifyDataSetChanged();
+    }
 }
 

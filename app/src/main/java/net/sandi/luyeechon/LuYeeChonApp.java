@@ -8,6 +8,7 @@ import android.content.Context;
  */
 public class LuYeeChonApp extends Application {
 
+    public static final String TAG="LuYeeChonApp";
     private static Context context;
 
     public static Context getContext() {

@@ -42,7 +42,7 @@ public class JokeViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         Glide.with(ivJoke.getContext())
                 .load(joke.getImageJoke())
                 .centerCrop()
-                .placeholder(R.drawable.lime)
+                .placeholder(R.drawable.joke2)
                 .into(ivJoke);
 
     }

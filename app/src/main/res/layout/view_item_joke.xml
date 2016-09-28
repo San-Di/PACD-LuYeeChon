@@ -5,7 +5,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
-        card_view:cardElevation="@dimen/card_elevation">
+        card_view:cardElevation="@dimen/card_elevation"
+        card_view:cardBackgroundColor="@color/cardview_light_background">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -15,6 +16,7 @@
             <ImageView
                 android:id="@+id/iv_joke_photo"
                 android:layout_width="match_parent"
+                android:scaleType="center"
                 android:layout_height="120dp"
                 android:src="@drawable/joke2"
                 />
@@ -23,9 +25,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
-                android:textAppearance="?android:textAppearanceLarge"
+                android:textAppearance="?android:textAppearanceMedium"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_marginLeft="@dimen/margin_small"
                 android:layout_gravity="bottom"
                 android:background="#B3FFFFFF"
                 android:textColor="#000"

@@ -1,9 +1,13 @@
 package net.sandi.luyeechon.activities;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,21 +16,24 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import net.sandi.luyeechon.LuYeeChonApp;
 import net.sandi.luyeechon.R;
 import net.sandi.luyeechon.data.vos.JokeVO;
+import net.sandi.luyeechon.data.persistence.LuYeeChonContract;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class JokeDetailActivity extends AppCompatActivity {
+public class JokeDetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final String IE_JOKE_TOPIC_NAME = "IE_JOKE_TOPIC_NAME";
 
     @BindView(R.id.toolbar_joke)
     Toolbar toolbarJoke;
 
-    @BindView(R.id.fab)
+    @BindView(R.id.fab_detail)
     FloatingActionButton fabJoke;
 
     @BindView(R.id.tv_joke_desc)
@@ -71,6 +78,12 @@ public class JokeDetailActivity extends AppCompatActivity {
 
         mJokeTitle = getIntent().getStringExtra(IE_JOKE_TOPIC_NAME);
         tvJokeDes.setText(mJoke.getJokeDes());
+
+        Glide.with(ivJoke.getContext())
+                .load(mJoke.getImageJoke())
+                .centerCrop()
+                .placeholder(R.drawable.lime)
+                .into(ivJoke);
         collapsingToolbarJoke.setTitle(mJokeTitle);
 
         /*
@@ -106,18 +119,41 @@ public class JokeDetailActivity extends AppCompatActivity {
     private void bindData(JokeVO jokeVO) {
         tvJokeDes.setText(jokeVO.getJokeDes());
 
-        /*
-        String imageUrl = MyanmarAttractionsConstants.IMAGE_ROOT_DIR + attraction.getImages()[0];
-        Glide.with(ivAttraction.getContext())
-                .load(imageUrl)
+        Glide.with(ivJoke.getContext())
+                .load(mJoke.getImageJoke())
                 .centerCrop()
-                .placeholder(R.drawable.stock_photo_placeholder)
-                .error(R.drawable.stock_photo_placeholder)
-                .into(ivAttraction);
-                */
+                .placeholder(R.drawable.lime)
+                .into(ivJoke);
 
         collapsingToolbarJoke.setTitle(mJokeTitle);
     }
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(this,
+                LuYeeChonContract.JokeEntry.buildJokeUriWithTitle(mJokeTitle),
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+        if (data != null && data.moveToFirst()) {
+            mJoke = JokeVO.parseFromCursor(data);
+//            mHealth.setImages(AttractionVO.loadAttractionImagesByTitle(mAttraction.getTitle()));
+
+            bindData(mJoke);
+        }
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
 }
 

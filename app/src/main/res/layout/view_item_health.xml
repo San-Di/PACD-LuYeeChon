@@ -7,14 +7,15 @@
     android:layout_marginTop="@dimen/margin_small"
     card_view:cardElevation="@dimen/card_elevation"
     card_view:cardUseCompatPadding="true"
-    android:background="#FFFFFF"
+    card_view:cardBackgroundColor="@color/cardview_light_background"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="@dimen/margin_medium">
+        android:padding="@dimen/margin_medium"
+        >
 
     <net.sandi.luyeechon.components.textviews.MMTextView
         android:id="@+id/tv_health_title"
@@ -22,13 +23,14 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-condensed"
         android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/black_full"
         android:text="@string/health_title"
         />
 
     <ImageView
         android:id="@+id/iv_health_photo"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="160dp"
         android:scaleType="centerCrop"
         android:layout_marginTop="@dimen/margin_medium"
         android:adjustViewBounds="true"
@@ -44,6 +46,7 @@
         android:lineSpacingMultiplier="1.2"
         android:layout_marginTop="@dimen/margin_medium"
         android:maxLines="4"
+        android:textColor="@color/secondary_text"
         android:ellipsize="end"
         android:text="@string/health_des"
         />

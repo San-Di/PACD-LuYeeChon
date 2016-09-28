@@ -30,6 +30,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.JokeDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <provider
+            android:authorities="@string/content_authority"
+            android:name=".data.persistence.LuYeeChonProvider"
+            android:exported="false"
+            android:syncable="true" />
     </application>
 
 </manifest>

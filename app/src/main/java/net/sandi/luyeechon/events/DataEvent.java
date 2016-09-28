@@ -1,0 +1,47 @@
+package net.sandi.luyeechon.events;
+
+import net.sandi.luyeechon.data.vos.HealthVO;
+import net.sandi.luyeechon.data.vos.JokeVO;
+
+import java.util.List;
+
+/**
+ * Created by UNiQUE on 9/25/2016.
+ */
+public class DataEvent {
+    public static class HealthDataLoadedEvent{
+        private String extraMessage;
+        private List<HealthVO> healthList;
+
+        public HealthDataLoadedEvent(String extraMessage, List<HealthVO> healthList) {
+            this.extraMessage = extraMessage;
+            this.healthList = healthList;
+        }
+
+        public String getExtraMessage() {
+            return extraMessage;
+        }
+
+        public List<HealthVO> getHealthList() {
+            return healthList;
+        }
+    }
+
+    public static class JokeDataLoadedEvent{
+        private String extraMessage;
+        private List<JokeVO> jokeList;
+
+        public JokeDataLoadedEvent(String extraMessage, List<JokeVO> jokeList) {
+            this.extraMessage = extraMessage;
+            this.jokeList = jokeList;
+        }
+
+        public String getExtraMessage() {
+            return extraMessage;
+        }
+
+        public List<JokeVO> getJokeList() {
+            return jokeList;
+        }
+    }
+}
