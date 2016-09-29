@@ -19,17 +19,19 @@ public class LuYeeChonProvider extends ContentProvider {
 
     //create integer value for each PATH
     public static final int MOTIVATOR = 100;
+    public static final int QUIZ=200;
     //   public static final int ATTRACTION_IMAGE = 200;   //create integer for buildUriMatcher
 
-    private static final String sAttractionTitleSelection = LuYeeChonContract.MotivatorEntry.COLUMN_TITLE + " = ?";
+    private static final String sMotivatorTitleSelection = LuYeeChonContract.MotivatorEntry.COLUMN_TITLE + " = ?";
+    private static final String sQuizTitleSelection = LuYeeChonContract.QuizEntry.COLUMN_TITLE + " = ?";
     //  private static final String sAttractionImageSelectionWithTitle = LuYeeChonContract.AttractionImageEntry.COLUMN_ATTRACTION_TITLE + " = ?";
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
-    private LuYeeChonDBHelper mMotivatorDBHelper;
+    private LuYeeChonDBHelper mLuyechonDBHelper;
 
     @Override
     public boolean onCreate() {
-        mMotivatorDBHelper = new LuYeeChonDBHelper(getContext());  //create and store db object
+        mLuyechonDBHelper = new LuYeeChonDBHelper(getContext());  //create and store db object
         return true;
     }
 
@@ -48,12 +50,27 @@ public class LuYeeChonProvider extends ContentProvider {
         switch (matchUri) {
             case MOTIVATOR:
                 // if uri's request parameter is title-> return value of these title
-                String attractionTitle = LuYeeChonContract.MotivatorEntry.getTitleFromParam(uri);
-                if (!TextUtils.isEmpty(attractionTitle)) {  //this check string =="" or string.length>0
-                    selection = sAttractionTitleSelection;
-                    selectionArgs = new String[]{attractionTitle};
+                String motivatorTitle = LuYeeChonContract.MotivatorEntry.getTitleFromParam(uri);
+                if (!TextUtils.isEmpty(motivatorTitle)) {  //this check string =="" or string.length>0
+                    selection = sMotivatorTitleSelection;
+                    selectionArgs = new String[]{motivatorTitle};
                 }
-                queryCursor = mMotivatorDBHelper.getReadableDatabase().query(LuYeeChonContract.MotivatorEntry.TABLE_NAME,
+                queryCursor = mLuyechonDBHelper.getReadableDatabase().query(LuYeeChonContract.MotivatorEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null, //group_by
+                        null, //having
+                        sortOrder);
+                break;
+            case QUIZ:
+                // if uri's request parameter is title-> return value of these title
+                String quizTitle = LuYeeChonContract.QuizEntry.getTitleFromParam(uri);
+                if (!TextUtils.isEmpty(quizTitle)) {  //this check string =="" or string.length>0
+                    selection = sQuizTitleSelection;
+                    selectionArgs = new String[]{quizTitle};
+                }
+                queryCursor = mLuyechonDBHelper.getReadableDatabase().query(LuYeeChonContract.QuizEntry.TABLE_NAME,
                         projection,
                         selection,
                         selectionArgs,
@@ -67,7 +84,7 @@ public class LuYeeChonProvider extends ContentProvider {
 //                    selection = sAttractionImageSelectionWithTitle;
 //                    selectionArgs = new String[]{title};
 //                }
-//                queryCursor = mMotivatorDBHelper.getReadableDatabase().query(AttractionsContract.AttractionImageEntry.TABLE_NAME,
+//                queryCursor = mLuyechonDBHelper.getReadableDatabase().query(AttractionsContract.AttractionImageEntry.TABLE_NAME,
 //                        projection,
 //                        selection,
 //                        selectionArgs,
@@ -94,6 +111,8 @@ public class LuYeeChonProvider extends ContentProvider {
         switch (matchUri) {
             case MOTIVATOR:
                 return LuYeeChonContract.MotivatorEntry.DIR_TYPE;
+            case QUIZ:
+                return LuYeeChonContract.QuizEntry.DIR_TYPE;
 //            case ATTRACTION_IMAGE:
 //                return AttractionsContract.AttractionImageEntry.DIR_TYPE;
             default:
@@ -104,7 +123,7 @@ public class LuYeeChonProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
-        final SQLiteDatabase db = mMotivatorDBHelper.getWritableDatabase();
+        final SQLiteDatabase db = mLuyechonDBHelper.getWritableDatabase();
         final int matchUri = sUriMatcher.match(uri);
         Uri insertedUri;
 
@@ -114,6 +133,16 @@ public class LuYeeChonProvider extends ContentProvider {
                 if (_id > 0) {
                     //create uri object for inserted data
                     insertedUri = LuYeeChonContract.MotivatorEntry.buildMotivatorUri(_id);
+                } else {
+                    throw new SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+            case QUIZ: {
+                long _id = db.insert(LuYeeChonContract.QuizEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
+                    //create uri object for inserted data
+                    insertedUri = LuYeeChonContract.QuizEntry.builQuizUri(_id);
                 } else {
                     throw new SQLException("Failed to insert row into " + uri);
                 }
@@ -144,7 +173,7 @@ public class LuYeeChonProvider extends ContentProvider {
 
     @Override
     public int bulkInsert(Uri uri, ContentValues[] values) {   //uri -> place to insert uri
-        final SQLiteDatabase db = mMotivatorDBHelper.getWritableDatabase();
+        final SQLiteDatabase db = mLuyechonDBHelper.getWritableDatabase();
         String tableName = getTableName(uri);
         int insertedCount = 0;
 
@@ -171,7 +200,7 @@ public class LuYeeChonProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        final SQLiteDatabase db = mMotivatorDBHelper.getWritableDatabase();
+        final SQLiteDatabase db = mLuyechonDBHelper.getWritableDatabase();
         int rowDeleted;
         String tableName = getTableName(uri);
 
@@ -185,7 +214,7 @@ public class LuYeeChonProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues contentValues, String selection, String[] selectionArgs) {
-        final SQLiteDatabase db = mMotivatorDBHelper.getWritableDatabase();
+        final SQLiteDatabase db = mLuyechonDBHelper.getWritableDatabase();
         int rowUpdated;
         String tableName = getTableName(uri);
 
@@ -201,6 +230,7 @@ public class LuYeeChonProvider extends ContentProvider {
         final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
         uriMatcher.addURI(LuYeeChonContract.CONTENT_AUTHORITY, LuYeeChonContract.PATH_MOTIVATOR, MOTIVATOR);
+        uriMatcher.addURI(LuYeeChonContract.CONTENT_AUTHORITY, LuYeeChonContract.PATH_QUIZ, QUIZ);
     //    uriMatcher.addURI(LuYeeChonContract.CONTENT_AUTHORITY, LuYeeChonContract.PATH_ATTRACTION_IMAGES, ATTRACTION_IMAGE);
 
         return uriMatcher;
@@ -212,6 +242,8 @@ public class LuYeeChonProvider extends ContentProvider {
         switch (matchUri) {
             case MOTIVATOR:
                 return LuYeeChonContract.MotivatorEntry.TABLE_NAME;
+            case QUIZ:
+                return LuYeeChonContract.QuizEntry.TABLE_NAME;
 //            case ATTRACTION_IMAGE:
 //                return AttractionsContract.AttractionImageEntry.TABLE_NAME;
 

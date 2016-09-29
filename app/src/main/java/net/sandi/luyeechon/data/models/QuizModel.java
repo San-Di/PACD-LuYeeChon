@@ -1,68 +1,67 @@
 package net.sandi.luyeechon.data.models;
 
-import com.google.gson.reflect.TypeToken;
-
 import net.sandi.luyeechon.data.vos.QuizVO;
-import net.sandi.luyeechon.utils.CommonInstances;
-import net.sandi.luyeechon.utils.JsonUtils;
+import net.sandi.luyeechon.events.DataEvent;
 
-import org.json.JSONException;
-
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Kaung Htet Lin on 9/24/2016.
  */
-public class QuizModel {
-
-    private static final String DUMMY_QUIZ_LIST = "quiz_list.json";
+public class QuizModel extends BaseModel{
 
     private static QuizModel objInstance;
 
-    private List<QuizVO> quizList;
+    private List<QuizVO> mQuizList;
 
-    private QuizModel(){
-        quizList = initializeQuizList();
+//    private LuYeeChonDataAgent dataAgent;
+
+    private QuizModel() {
+        super();
+        mQuizList = new ArrayList<>();
+        //    initDataAgent(INIT_DATA_AGENT_RETROFIT);
+        dataAgent.loadQuiz();
     }
 
-    public static QuizModel getInstance(){
-        if(objInstance == null) {
+
+    public static QuizModel getInstance() {
+        if (objInstance == null) {
             objInstance = new QuizModel();
         }
-
         return objInstance;
     }
 
-    private List<QuizVO> initializeQuizList() {
-        List<QuizVO> QuizList = new ArrayList<>();
-
-        try {
-            String dummyQuizList = JsonUtils.getInstance().loadDummyData(DUMMY_QUIZ_LIST);
-            Type listType = new TypeToken<List<QuizVO>>() {
-            }.getType();
-            QuizList = CommonInstances.getGsonInstance().fromJson(dummyQuizList, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return QuizList;
-    }
-
     public List<QuizVO> getQuizList() {
-        return quizList;
+        return mQuizList;
     }
 
-   /* public EventVO getEventByTitle(String eventTitle) {
-        for (EventVO event : eventList) {
-            if (event.getEventTitle().equals(eventTitle)) {
-                return event;
-            }
-        }
-        return null;
+
+    public void notifyQuizLoaded(List<QuizVO> quizList) {
+        //Notify that the data is ready - using LocalBroadcast
+        mQuizList = quizList;
+
+        //keep the data in persistent layer.
+        QuizVO.saveQuiz(mQuizList);
+
+        broadcastQuizLoadedWithEventBus();
+        //broadcastMotivatorLoadedWithLocalBroadcastManager();
     }
-*/
+
+    public void notifyErrorInLoadingQuiz(String message) {
+
+    }
+
+
+    private void broadcastQuizLoadedWithEventBus() {
+        EventBus.getDefault().post(new DataEvent.QuizDataLoadEvent("extra-in-broadcast", mQuizList));
+    }
+
+    public void setStoredData(List<QuizVO> quizList) {
+        mQuizList = quizList;
+    }
+
+
 }

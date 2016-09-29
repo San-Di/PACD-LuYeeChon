@@ -2,7 +2,9 @@ package net.sandi.luyeechon.data.agents.retrofit;
 
 import net.sandi.luyeechon.data.agents.LuYeeChonDataAgent;
 import net.sandi.luyeechon.data.models.MotivatorModel;
+import net.sandi.luyeechon.data.models.QuizModel;
 import net.sandi.luyeechon.data.responses.MotivatorListResponse;
+import net.sandi.luyeechon.data.responses.QuizListResponse;
 import net.sandi.luyeechon.utils.CommonInstances;
 import net.sandi.luyeechon.utils.LuYeeChonConstants;
 
@@ -18,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by Kaung Htet Lin on 9/27/2016.
  */
-public class RetrofitDataAgent implements LuYeeChonDataAgent{
+public class RetrofitDataAgent implements LuYeeChonDataAgent {
 
 
     private static RetrofitDataAgent objInstance;
@@ -58,13 +60,34 @@ public class RetrofitDataAgent implements LuYeeChonDataAgent{
                 if (motivatorListResponse == null) {
                     MotivatorModel.getInstance().notifyErrorInLoadingMotivator(response.message());
                 } else {
-                   MotivatorModel.getInstance().notifyMotivatorLoaded(motivatorListResponse.getMotivatorList());
+                    MotivatorModel.getInstance().notifyMotivatorLoaded(motivatorListResponse.getMotivatorList());
                 }
             }
 
             @Override
             public void onFailure(Call<MotivatorListResponse> call, Throwable throwable) {
                 MotivatorModel.getInstance().notifyErrorInLoadingMotivator(throwable.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void loadQuiz() {
+        Call<QuizListResponse> loadQuizCall = theApi.loadQuiz(LuYeeChonConstants.ACCESS_TOKEN);
+        loadQuizCall.enqueue(new Callback<QuizListResponse>() {  //preparatin state  before request
+            @Override
+            public void onResponse(Call<QuizListResponse> call, Response<QuizListResponse> response) {
+                QuizListResponse quizListResponse = response.body();
+                if (quizListResponse == null) {
+                    QuizModel.getInstance().notifyErrorInLoadingQuiz(response.message());
+                } else {
+                    QuizModel.getInstance().notifyQuizLoaded(quizListResponse.getQuizList());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<QuizListResponse> call, Throwable throwable) {
+                QuizModel.getInstance().notifyErrorInLoadingQuiz(throwable.getMessage());
             }
         });
     }

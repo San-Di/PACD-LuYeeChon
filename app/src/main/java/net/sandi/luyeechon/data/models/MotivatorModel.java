@@ -1,8 +1,5 @@
 package net.sandi.luyeechon.data.models;
 
-import net.sandi.luyeechon.data.agents.LuYeeChonDataAgent;
-import net.sandi.luyeechon.data.agents.OfflineDataAgent;
-import net.sandi.luyeechon.data.agents.retrofit.RetrofitDataAgent;
 import net.sandi.luyeechon.data.vos.MotivatorVO;
 import net.sandi.luyeechon.events.DataEvent;
 
@@ -14,24 +11,25 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by Kaung Htet Lin on 9/24/2016.
  */
-public class MotivatorModel {
+public class MotivatorModel extends BaseModel{
 
-    public static final String BROADCAST_DATA_LOADED = "BROADCAST_DATA_LOADED";
-
-    private static final int INIT_DATA_AGENT_OFFLINE = 1;
-    private static final int INIT_DATA_AGENT_HTTP_URL_CONNECTION = 2;
-    private static final int INIT_DATA_AGENT_OK_HTTP = 3;
-    private static final int INIT_DATA_AGENT_RETROFIT = 4;
+//    public static final String BROADCAST_DATA_LOADED = "BROADCAST_DATA_LOADED";
+//
+//    private static final int INIT_DATA_AGENT_OFFLINE = 1;
+//    private static final int INIT_DATA_AGENT_HTTP_URL_CONNECTION = 2;
+//    private static final int INIT_DATA_AGENT_OK_HTTP = 3;
+//    private static final int INIT_DATA_AGENT_RETROFIT = 4;
 
     private static MotivatorModel objInstance;
 
     private List<MotivatorVO> mMotivatorList;
 
-    private LuYeeChonDataAgent dataAgent;
+//    private LuYeeChonDataAgent dataAgent;
 
     private MotivatorModel() {
+        super();
         mMotivatorList = new ArrayList<>();
-        initDataAgent(INIT_DATA_AGENT_RETROFIT);
+    //    initDataAgent(INIT_DATA_AGENT_RETROFIT);
         dataAgent.loadMotivator();
     }
 
@@ -42,22 +40,22 @@ public class MotivatorModel {
         return objInstance;
     }
 
-    private void initDataAgent(int initType) {
-        switch (initType) {
-            case INIT_DATA_AGENT_OFFLINE:
-                dataAgent = OfflineDataAgent.getInstance();
-                break;
-            case INIT_DATA_AGENT_HTTP_URL_CONNECTION:
-              //  dataAgent = HttpUrlConnectionDataAgent.getInstance();
-                break;
-            case INIT_DATA_AGENT_OK_HTTP:
-             //   dataAgent = OkHttpDataAgent.getInstance();
-                break;
-            case INIT_DATA_AGENT_RETROFIT:
-                dataAgent = RetrofitDataAgent.getInstance();
-                break;
-        }
-    }
+//    private void initDataAgent(int initType) {
+//        switch (initType) {
+//            case INIT_DATA_AGENT_OFFLINE:
+//                dataAgent = OfflineDataAgent.getInstance();
+//                break;
+//            case INIT_DATA_AGENT_HTTP_URL_CONNECTION:
+//              //  dataAgent = HttpUrlConnectionDataAgent.getInstance();
+//                break;
+//            case INIT_DATA_AGENT_OK_HTTP:
+//             //   dataAgent = OkHttpDataAgent.getInstance();
+//                break;
+//            case INIT_DATA_AGENT_RETROFIT:
+//                dataAgent = RetrofitDataAgent.getInstance();
+//                break;
+//        }
+//    }
 
     public List<MotivatorVO> getMotivatorList() {
         return mMotivatorList;

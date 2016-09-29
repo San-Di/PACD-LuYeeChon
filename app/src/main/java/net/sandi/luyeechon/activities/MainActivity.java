@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .replace(R.id.fl_container,motivatorFragment)
                 .commit();
 
+     //   QuizActivity.loadQuiz();
+
     }
 
     @Override

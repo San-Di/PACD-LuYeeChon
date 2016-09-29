@@ -1,9 +1,14 @@
 package net.sandi.luyeechon.activities;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,23 +19,27 @@ import android.widget.TextView;
 import net.sandi.luyeechon.LuYeeChonApp;
 import net.sandi.luyeechon.R;
 import net.sandi.luyeechon.data.models.QuizModel;
+import net.sandi.luyeechon.data.persistence.LuYeeChonContract;
 import net.sandi.luyeechon.data.vos.QuizVO;
+import net.sandi.luyeechon.events.DataEvent;
+import net.sandi.luyeechon.utils.LuYeeChonConstants;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Kaung Htet Lin on 9/18/2016.
  */
-public class QuizActivity extends AppCompatActivity {
+public class QuizActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private static List<QuizVO> quizVOList;
+    private static List<QuizVO> quizVOList = new ArrayList<>();
 
     public static Intent newIntent() {
-        quizVOList = QuizModel.getInstance().getQuizList();
         Intent intent = new Intent(LuYeeChonApp.getContext(), QuizActivity.class);
         return intent;
     }
@@ -60,10 +69,18 @@ public class QuizActivity extends AppCompatActivity {
 //    @BindView(R.id.tv_quiz_title)
 //    TextView tvQuizTitle;
 
+//  //  public static void loadQuiz()
+//    {
+//        quizVOList = QuizModel.getInstance().getQuizList();
+//    }
+
     @Override
     protected void onStart() {
         super.onStart();
-        setData();
+        EventBus eventBus = EventBus.getDefault();
+        if (!eventBus.isRegistered(this)) {
+            eventBus.register(this);
+        }
     }
 
     @Override
@@ -71,14 +88,16 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         ButterKnife.bind(this, this);
-
 //        final ActionBar actionBar = getSupportActionBar();
 //        if (actionBar != null) {
 //            actionBar.setDisplayShowTitleEnabled(false);
 //            actionBar.setDisplayHomeAsUpEnabled(true);
 //        }
 //        tvQuizTitle.setText(R.string.txt_title_quiz);
-        randomNum = new Random().nextInt(quizVOList.size() - 0 + 1) + 0;
+
+        List<QuizVO> quizList = QuizModel.getInstance().getQuizList();
+        //   setData();
+        //       randomNum = new Random().nextInt(quizVOList.size() - 0 + 1) ;
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +140,8 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        getSupportLoaderManager().initLoader(LuYeeChonConstants.QUIZ_LIST_LOADER, null, this);
+
     }
 
     public void setData() {
@@ -134,7 +155,8 @@ public class QuizActivity extends AppCompatActivity {
         } else {
             randomNum++;
         }
-        txtQuestion.setText(quizVOList.get(randomNum).getQuestion());
+        if (quizVOList.size() > 0)
+            txtQuestion.setText(quizVOList.get(randomNum).getQuestion());
         btnDone.setText(R.string.btn_done);
         txtResult.setVisibility(View.INVISIBLE);
     }
@@ -151,6 +173,68 @@ public class QuizActivity extends AppCompatActivity {
         }
         return false;
     }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        EventBus eventBus = EventBus.getDefault();
+        eventBus.unregister(this);
+    }
+
+
+    public void onEventMainThread(DataEvent.QuizDataLoadEvent event) {
+        String extra = event.getExtraMessage();
+        //        Toast.makeText(getApplicationContext(), "Extra : " + extra, Toast.LENGTH_SHORT).show();
+
+        //    List<AttractionVO> newAttractionList = AttractionModel.getInstance().getQuizList();
+        List<QuizVO> newQuizList = event.getQuizList();
+        quizVOList = newQuizList;
+        randomNum = new Random().nextInt(quizVOList.size() + 1);
+
+        setData();
+        //      mMotivatorAdapter.setNewData(newAttractionList);
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(this,
+                LuYeeChonContract.QuizEntry.CONTENT_URI,
+                null,
+                null,
+                null,
+                LuYeeChonContract.QuizEntry._ID);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+        List<QuizVO> quizList = new ArrayList<>();
+        if (data != null && data.moveToFirst()) {
+            do {
+                QuizVO quiz = QuizVO.parseFromCursor(data);
+             //   quiz.setImages(AttractionVO.loadAttractionImagesByTitle(quiz.getTitle()));
+                quizList.add(quiz);
+            } while (data.moveToNext());
+        }
+
+        Log.d(LuYeeChonApp.TAG, "Retrieved attractions DESC : " + quizList.size());
+    //    mAttractionAdapter.setNewData(quizList);
+
+        QuizModel.getInstance().setStoredData(quizList);
+
+        quizVOList=quizList;
+        randomNum = new Random().nextInt(quizVOList.size() + 1);
+        setData();
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
+
+
 //
 //    @Override
 //    public void onBackPressed() {

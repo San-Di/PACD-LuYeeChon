@@ -66,7 +66,7 @@ public class MotivatorFragment extends Fragment implements LoaderManager.LoaderC
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getActivity().getSupportLoaderManager().initLoader(LuYeeChonConstants.ATTRACTION_LIST_LOADER, null, this);
+        getActivity().getSupportLoaderManager().initLoader(LuYeeChonConstants.MOTIVATOR_LIST_LOADER, null, this);
 
     }
 
@@ -91,9 +91,9 @@ public class MotivatorFragment extends Fragment implements LoaderManager.LoaderC
         String extra = event.getExtraMessage();
         //     Toast.makeText(getApplicationContext(), "Extra : " + extra, Toast.LENGTH_SHORT).show();
 
-    //    List<AttractionVO> newAttractionList = AttractionModel.getInstance().getAttractionList();
-        List<MotivatorVO> newAttractionList = event.getAttractionList();
-        mMotivatorAdapter.setNewData(newAttractionList);
+    //    List<AttractionVO> newAttractionList = AttractionModel.getInstance().getQuizList();
+        List<MotivatorVO> newQuizList = event.getQuizList();
+        mMotivatorAdapter.setNewData(newQuizList);
     }
 
     @Override
@@ -133,8 +133,8 @@ public class MotivatorFragment extends Fragment implements LoaderManager.LoaderC
 //        String extra = event.getExtraMessage();
 //        Toast.makeText(getContext(), "Extra : " + extra, Toast.LENGTH_SHORT).show();
 //
-//        //List<AttractionVO> newAttractionList = AttractionModel.getInstance().getAttractionList();
-//        List<MotivatorVO> newAttractionList = event.getAttractionList();
+//        //List<AttractionVO> newAttractionList = AttractionModel.getInstance().getQuizList();
+//        List<MotivatorVO> newAttractionList = event.getQuizList();
 //        mMotivatorAdapter.setNewData(newAttractionList);
 //    }
 }

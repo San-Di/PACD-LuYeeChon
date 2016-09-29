@@ -13,7 +13,8 @@ public class LuYeeChonConstants {
     public static final String PARAM_ACCESS_TOKEN = "access_token";
     public static final String ACCESS_TOKEN = "b002c7e1a528b7cb460933fc2875e916";
 
-    public static final int ATTRACTION_LIST_LOADER = 1;
+    public static final int MOTIVATOR_LIST_LOADER = 1;
+    public static final int QUIZ_LIST_LOADER=2;
 
 
 }

@@ -5,4 +5,5 @@ package net.sandi.luyeechon.data.agents;
  */
 public interface LuYeeChonDataAgent {
     void loadMotivator();
+    void loadQuiz();
 }
