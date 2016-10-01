@@ -27,11 +27,11 @@ public class LuYeeChonProvider extends ContentProvider {
     //  private static final String sAttractionImageSelectionWithTitle = LuYeeChonContract.AttractionImageEntry.COLUMN_ATTRACTION_TITLE + " = ?";
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
-    private LuYeeChonDBHelper mLuyechonDBHelper;
+    private LuYeeChonDBHelper mLuYeeChonDBHelper;
 
     @Override
     public boolean onCreate() {
-        mLuyechonDBHelper = new LuYeeChonDBHelper(getContext());  //create and store db object
+        mLuYeeChonDBHelper = new LuYeeChonDBHelper(getContext());  //create and store db object
         return true;
     }
 
@@ -55,7 +55,7 @@ public class LuYeeChonProvider extends ContentProvider {
                     selection = sMotivatorTitleSelection;
                     selectionArgs = new String[]{motivatorTitle};
                 }
-                queryCursor = mLuyechonDBHelper.getReadableDatabase().query(LuYeeChonContract.MotivatorEntry.TABLE_NAME,
+                queryCursor = mLuYeeChonDBHelper.getReadableDatabase().query(LuYeeChonContract.MotivatorEntry.TABLE_NAME,
                         projection,
                         selection,
                         selectionArgs,
@@ -70,7 +70,7 @@ public class LuYeeChonProvider extends ContentProvider {
                     selection = sQuizTitleSelection;
                     selectionArgs = new String[]{quizTitle};
                 }
-                queryCursor = mLuyechonDBHelper.getReadableDatabase().query(LuYeeChonContract.QuizEntry.TABLE_NAME,
+                queryCursor = mLuYeeChonDBHelper.getReadableDatabase().query(LuYeeChonContract.QuizEntry.TABLE_NAME,
                         projection,
                         selection,
                         selectionArgs,
@@ -84,7 +84,7 @@ public class LuYeeChonProvider extends ContentProvider {
 //                    selection = sAttractionImageSelectionWithTitle;
 //                    selectionArgs = new String[]{title};
 //                }
-//                queryCursor = mLuyechonDBHelper.getReadableDatabase().query(AttractionsContract.AttractionImageEntry.TABLE_NAME,
+//                queryCursor = mLuYeeChonDBHelper.getReadableDatabase().query(AttractionsContract.AttractionImageEntry.TABLE_NAME,
 //                        projection,
 //                        selection,
 //                        selectionArgs,
@@ -123,7 +123,7 @@ public class LuYeeChonProvider extends ContentProvider {
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
-        final SQLiteDatabase db = mLuyechonDBHelper.getWritableDatabase();
+        final SQLiteDatabase db = mLuYeeChonDBHelper.getWritableDatabase();
         final int matchUri = sUriMatcher.match(uri);
         Uri insertedUri;
 
@@ -173,7 +173,7 @@ public class LuYeeChonProvider extends ContentProvider {
 
     @Override
     public int bulkInsert(Uri uri, ContentValues[] values) {   //uri -> place to insert uri
-        final SQLiteDatabase db = mLuyechonDBHelper.getWritableDatabase();
+        final SQLiteDatabase db = mLuYeeChonDBHelper.getWritableDatabase();
         String tableName = getTableName(uri);
         int insertedCount = 0;
 
@@ -200,7 +200,7 @@ public class LuYeeChonProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        final SQLiteDatabase db = mLuyechonDBHelper.getWritableDatabase();
+        final SQLiteDatabase db = mLuYeeChonDBHelper.getWritableDatabase();
         int rowDeleted;
         String tableName = getTableName(uri);
 
@@ -214,7 +214,7 @@ public class LuYeeChonProvider extends ContentProvider {
 
     @Override
     public int update(Uri uri, ContentValues contentValues, String selection, String[] selectionArgs) {
-        final SQLiteDatabase db = mLuyechonDBHelper.getWritableDatabase();
+        final SQLiteDatabase db = mLuYeeChonDBHelper.getWritableDatabase();
         int rowUpdated;
         String tableName = getTableName(uri);
 
